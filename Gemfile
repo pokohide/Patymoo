@@ -21,6 +21,13 @@ gem 'puma', '~> 3.0'
 # gem 'rails-i18n'
 # gem 'enum_help'
 
+# SEO
+gem 'meta-tags'
+gem 'sitemap_generator'
+
+# Data
+gem 'seed-fu', '~> 2.3'
+
 # Frontend
 gem 'gon'
 gem 'kaminari'
@@ -42,6 +49,7 @@ gem 'bcrypt'
 gem 'counter_culture'
 
 # API
+# gem 'yajl-ruby' 
 gem 'jbuilder', '~> 2.5'
 
 group :development, :test do

@@ -1,1 +1,4 @@
-.admins.new { @import 'new'; }
+.admins.new,
+.admins.create {
+  @import 'new';
+}

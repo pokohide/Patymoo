@@ -3,8 +3,9 @@
 = javascript_include_tag 'application', debug: false
 
 = csrf_meta_tags
-/ - if content_for(:page_title)
-/   - set_meta_tags site: 'Techbo', title: yield(:page_title), reverse: true
-/ - else
-/   - set_meta_tags site: 'Techbo'
-/ = display_meta_tags(default_meta_tags)
+- if content_for(:page_title)
+  - set_meta_tags site: 'Party', title: yield(:page_title), reverse: true
+- else
+  - set_meta_tags site: 'Party'
+/ = favicon_link_tag 'favicon.ico'
+= display_meta_tags default_meta_tags
