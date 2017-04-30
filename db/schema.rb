@@ -10,23 +10,27 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170430204336) do
+ActiveRecord::Schema.define(version: 20170430211900) do
 
   create_table "admins", force: :cascade do |t|
-    t.string   "username",                     null: false
-    t.string   "email",                        null: false
+    t.string   "username",                                 null: false
+    t.string   "email",                                    null: false
     t.string   "crypted_password"
     t.string   "salt"
-    t.datetime "created_at",                   null: false
-    t.datetime "updated_at",                   null: false
+    t.datetime "created_at",                               null: false
+    t.datetime "updated_at",                               null: false
     t.string   "remember_me_token"
     t.datetime "remember_me_token_expires_at"
     t.string   "activation_state"
     t.string   "activation_token"
     t.datetime "activation_token_expires_at"
+    t.integer  "failed_logins_count",          default: 0
+    t.datetime "lock_expires_at"
+    t.string   "unlock_token"
     t.index ["activation_token"], name: "index_admins_on_activation_token"
     t.index ["email"], name: "index_admins_on_email", unique: true
     t.index ["remember_me_token"], name: "index_admins_on_remember_me_token"
+    t.index ["unlock_token"], name: "index_admins_on_unlock_token"
   end
 
 end

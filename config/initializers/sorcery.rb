@@ -1,5 +1,5 @@
 Rails.application.config.sorcery.submodules = [:user_activation, :remember_me,
-  :reset_password, :session_timeout, :brute_force_protection, :activity_logging, :external]
+  :reset_password, :session_timeout, :brute_force_protection, :external]
 
 Rails.application.config.sorcery.configure do |config|
   # When a non logged in user tries to enter a page that requires login, save
@@ -96,8 +96,8 @@ Rails.application.config.sorcery.configure do |config|
     user.username_attribute_names = %i(email username)
     # user.user_activation_mailer = UserMailer
     user.user_activation_mailer = AdminMailer
-    user.activation_token_attribute_name = :activation_code
-    user.activation_token_expires_at_attribute_name = :activation_code_expires_at
+    # user.activation_token_attribute_name = :activation_code
+    # user.activation_token_expires_at_attribute_name = :activation_code_expires_at
 
     user.subclasses_inherit_config = true
 
@@ -106,7 +106,7 @@ Rails.application.config.sorcery.configure do |config|
     user.reset_password_expiration_period = 10.minutes
     user.reset_password_time_between_emails = 5 * 60 # (s) nil
 
-    user.activity_timeout = 1.minutes
+    # user.activity_timeout = 1.minutes
 
     user.consecutive_login_retries_amount_limit = 10
     user.login_lock_time_period = 2.minutes

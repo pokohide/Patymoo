@@ -4,6 +4,7 @@ class AdminMailer < ActionMailer::Base
   layout 'mailer'
 
   def activation_needed_email(admin)
+    root_url = 'http://localhost:3000/'
     @admin = admin
     @url  = "#{root_url}admins/#{admin.activation_token}/activate"
     mail to: admin.email,
@@ -11,6 +12,7 @@ class AdminMailer < ActionMailer::Base
   end
 
   def activation_success_email(admin)
+    root_url = 'http://localhost:3000/'
     @admin = admin
     # @club = @admin.try(:club)
     @url  = "#{root_url}login"
