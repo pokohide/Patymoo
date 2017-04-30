@@ -1,5 +1,5 @@
 class AdminsController < ApplicationController
-  skip_before_action :require_login, except: [:show], raise: false
+  skip_before_action :require_login, only: [:new, :create, :activate], raise: false
 
   def new
     @admin = Admin.new
@@ -15,6 +15,15 @@ class AdminsController < ApplicationController
       redirect_to admin_path(@admin), notice: '新規登録しました。'
     else
       render :new, notice: '登録に失敗しました。'
+    end
+  end
+
+  def activate
+    if (@admin = Admin.load_from_activation_token(params[:id]))
+      @admin.activate!
+      redirect_to(login_path, notice: 'アカウントが有効になりました。')
+    else
+      not_authenticated
     end
   end
 

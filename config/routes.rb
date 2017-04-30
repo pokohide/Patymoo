@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
 
-  resources :admins, only: [:new, :create, :show]
+  resources :admins, only: [:new, :create, :show] do
+    member do
+      get :activate
+    end
+  end
   resources :sessions, only: [:new, :create, :destroy]
   resources :password_resets, only: [:create, :edit, :update]
 
