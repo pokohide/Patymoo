@@ -1,0 +1,31 @@
+.ui.large.top.fixed.menu
+  .ui.container
+    = link_to '#', class: 'header item' do
+      = image_tag 'party.png', class: 'logo'
+
+    .right.menu
+      /.item
+      /  = form_tag '/entries/search', method: :get, enforce_utf8: false, class: 'ui action transparent input' do
+      /    = text_field_tag :q, '', placeholder: 'Search...'
+      /    = button_tag type: 'submit', class: 'ui teal right icon button' do
+      /      i.search.icon
+        
+      - if logged_in?
+        - cache current_user do
+          .ui.right.floated.dropdown.item
+            / = image_tag current_user.avatar_url(:thumb), class: 'ui avatar image'
+            b.username = current_user.username
+            i.dropdown.icon
+            .menu
+              = link_to 'マイページ', '#', class: 'item'
+              = link_to 'プロフィール編集', '#', class: 'item'
+              = link_to 'ログアウト', '#', method: :delete, class: 'item'
+      - else
+        .item
+          .ui.buttons
+            = link_to 'ログイン', '#', class: 'ui positive button'
+            .or
+            = link_to 'サインイン', '#', class: 'ui button'
+      .item
+        = link_to '#' do
+          i.write.icon

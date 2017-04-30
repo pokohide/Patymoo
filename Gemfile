@@ -38,6 +38,7 @@ gem 'dotenv-rails'
 
 # User
 gem 'sorcery'
+gem 'bcrypt'
 gem 'counter_culture'
 
 # API

@@ -1,9 +1,15 @@
 class AdminsController < ApplicationController
+  skip_before_action :require_login, except: [:destroy], raise: false
+
   def new
     @admin = Admin.new
   end
 
   def show
+    @admin = Admin.find(params[:id])
+  end
+
+  def create
     @admin = Admin.new(admin_params)
     if @admin.save
       redirect_to admin_path(@admin), notice: '新規登録しました。'
@@ -15,6 +21,7 @@ class AdminsController < ApplicationController
   private
 
   def admin_params
-    params.require(:admin).permit(:username, :email, :password)
+    params.require(:admin).permit(:username,
+      :password_confirmation, :email, :password)
   end
 end

@@ -1,2 +1,33 @@
-h1 Admins#new
-p Find me in app/views/admins/new.html.slim
+/ - content_for :header do
+/  = render 'templates/breadcrumb', breadcrumb: { 'サークル管理者の新規登録': signup_path }
+/ - title = 'サークル管理者の新規登録'
+/ - set_seo(title: title, noindex: true)
+
+.ui.middle.aligned.center.aligned.grid
+  .column
+    h2.ui.teal.header
+      .content 管理者の新規登録
+    = form_for(@admin, html: { class: 'ui large form' }) do |f|
+      = render 'shared/error_messages', object: f.object
+      .ui.stacked.segment
+        .field
+          .ui.left.icon.input
+            i.user.icon
+            = f.text_field :username, placeholder: '組織名', class: 'input', autofocus: true
+        .field
+          .ui.left.icon.input
+            i.user.icon
+            = f.text_field :email, placeholder: 'メールアドレス', class: 'input'
+        .field
+          .ui.left.icon.input
+            i.lock.icon
+            = f.password_field :password, placeholder: 'パスワード', class: 'input', autocomplete: 'off'
+          span.note 半角英数記号6〜20文字
+        .field
+          .ui.left.icon.input
+            i.lock.icon
+            = f.password_field :password_confirmation, placeholder: 'パスワード確認', class: 'input', autocomplete: 'off'
+        = f.submit '新規登録する', class: 'ui fluid large teal submit button'
+    p
+      | or
+      = link_to 'ログインする', new_session_path
