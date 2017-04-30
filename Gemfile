@@ -37,7 +37,7 @@ gem 'semantic-ui-sass', github: 'doabit/semantic-ui-sass'
 gem 'dotenv-rails'
 
 # User
-# gem 'devise'
+gem 'sorcery'
 gem 'counter_culture'
 
 # API
