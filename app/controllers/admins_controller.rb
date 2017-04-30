@@ -1,5 +1,5 @@
 class AdminsController < ApplicationController
-  skip_before_action :require_login, except: [:destroy], raise: false
+  skip_before_action :require_login, except: [:show], raise: false
 
   def new
     @admin = Admin.new

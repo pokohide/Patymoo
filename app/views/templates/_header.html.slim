@@ -9,7 +9,7 @@
       /    = text_field_tag :q, '', placeholder: 'Search...'
       /    = button_tag type: 'submit', class: 'ui teal right icon button' do
       /      i.search.icon
-        
+
       - if logged_in?
         - cache current_user do
           .ui.right.floated.dropdown.item
@@ -17,15 +17,15 @@
             b.username = current_user.username
             i.dropdown.icon
             .menu
-              = link_to 'マイページ', '#', class: 'item'
-              = link_to 'プロフィール編集', '#', class: 'item'
-              = link_to 'ログアウト', '#', method: :delete, class: 'item'
+              / = link_to 'マイページ', '#', class: 'item'
+              / = link_to 'プロフィール編集', edit_admin_path(current_user), class: 'item'
+              = link_to 'ログアウト', logout_path, method: :delete, class: 'item'
       - else
         .item
           .ui.buttons
-            = link_to 'ログイン', '#', class: 'ui positive button'
+            = link_to 'ログイン', login_path, class: 'ui positive button'
             .or
-            = link_to 'サインイン', '#', class: 'ui button'
+            = link_to 'サインイン', signup_path, class: 'ui button'
       .item
         = link_to '#' do
           i.write.icon

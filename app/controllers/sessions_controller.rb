@@ -1,4 +1,6 @@
 class SessionsController < ApplicationController
+  skip_before_action :require_login, except: [:destroy], raise: false
+
   def new
     @admin = Admin.new
   end

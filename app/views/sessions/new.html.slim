@@ -1,2 +1,36 @@
-h1 Sessions#new
-p Find me in app/views/sessions/new.html.slim
+/ - content_for :header do
+/  = render 'templates/breadcrumb', breadcrumb: { 'ログイン画面': login_path }
+
+/- title = 'ログイン画面'
+/- set_seo(title: title, noindex: true)
+
+.ui.middle.aligned.center.aligned.grid
+  .column
+    h2.ui.teal.header
+      .content ログインする
+    = form_tag(sessions_path, method: :post, class: 'ui large form') do
+      .ui.stacked.segment
+        .field
+          .ui.left.icon.input
+            i.mail.outline.icon
+            = text_field_tag :email, '', placeholder: 'メールアドレス', class: 'input', autofocus: true
+        .field
+          .ui.left.icon.input
+            i.lock.icon
+            = password_field_tag :password, '', placeholder: 'パスワード', class: 'input', autocomplete: 'off'
+        .field
+          .ui.checkbox
+            = check_box_tag :remember_me, 1, params[:remember_me], class: 'checkbox'
+            | 1週間、ログイン情報を保持する
+        = submit_tag 'ログイン', class: 'ui fluid large teal submit button'
+    .ui.message
+      p
+        = link_to new_admin_path, style: 'color:#333' do
+          | 新規登録する
+      p
+        = form_tag password_resets_path, method: :post do
+          .field
+            .ui.left.icon.input
+              i.mail.outline.icon
+              = text_field_tag :email, '', class: 'input', placeholder: 'メールアドレス ( パスワードを忘れた ) '
+            = submit_tag '再発行', class: 'ui submit button'

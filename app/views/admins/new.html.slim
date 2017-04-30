@@ -6,17 +6,17 @@
 .ui.middle.aligned.center.aligned.grid
   .column
     h2.ui.teal.header
-      .content 管理者の新規登録
+      .content 新規登録する
     = form_for(@admin, html: { class: 'ui large form' }) do |f|
       = render 'shared/error_messages', object: f.object
       .ui.stacked.segment
         .field
           .ui.left.icon.input
-            i.user.icon
+            i.users.icon
             = f.text_field :username, placeholder: '組織名', class: 'input', autofocus: true
         .field
           .ui.left.icon.input
-            i.user.icon
+            i.mail.outline.icon
             = f.text_field :email, placeholder: 'メールアドレス', class: 'input'
         .field
           .ui.left.icon.input
@@ -28,6 +28,6 @@
             i.lock.icon
             = f.password_field :password_confirmation, placeholder: 'パスワード確認', class: 'input', autocomplete: 'off'
         = f.submit '新規登録する', class: 'ui fluid large teal submit button'
-    p
-      | or
+    .ui.message
+      | or  
       = link_to 'ログインする', new_session_path
