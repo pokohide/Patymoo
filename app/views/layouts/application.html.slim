@@ -1,0 +1,13 @@
+doctype html
+head
+  == render 'templates/head'
+body class="#{controller_name} #{action_name}"
+  header
+    == render 'templates/header'
+    == yield :header
+  main
+    / = flash_message(flash: flash, notice: notice, alert: alert)
+    section.main
+      == yield
+  footer
+    == render 'templates/footer'

@@ -13,3 +13,9 @@
  *= require_tree .
  *= require_self
  */
+
+@import "semantic-ui";
+@import 'variable';
+@import 'base/base';
+@import 'libs/base';
+@import 'components/base';

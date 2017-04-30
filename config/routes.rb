@@ -1,3 +1,14 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+
+  resources :admins, only: [:new, :create, :show] do
+    member do
+      get :activate
+    end
+  end
+  resources :sessions, only: [:new, :create, :destroy]
+  resources :password_resets, only: [:create, :edit, :update]
+
+  get 'signup' => 'admins#new', as: 'signup'
+  get 'login' => 'sessions#new', as: 'login'
+  delete 'logout' => 'sessions#destroy', as: 'logout'
 end
