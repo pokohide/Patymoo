@@ -5,14 +5,42 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
-
-# Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.0.2'
-# Use sqlite3 as the database for Active Record
-gem 'sqlite3'
-# Use Puma as the app server
+
+# gem 'sqlite3'
+gem 'pg'
+
+# Server
 gem 'puma', '~> 3.0'
-# Use SCSS for stylesheets
+
+# Image
+# gem 'aws-sdk', '< 2.0'
+# gem 'paperclip', '~>4'
+
+# Enum
+# gem 'rails-i18n'
+# gem 'enum_help'
+
+# Frontend
+gem 'gon'
+gem 'kaminari'
+gem 'slim-rails'
+gem 'jquery-rails'
+gem 'jquery-ui-rails'
+gem 'coffee-rails', '~> 4.2'
+gem 'acts-as-taggable-on', '~> 4.0'
+gem 'uglifier', '>= 1.3.0'
+gem 'sass-rails', '~> 5.0'
+gem 'semantic-ui-sass', github: 'doabit/semantic-ui-sass'
+
+# ENV
+gem 'dotenv-rails'
+
+# User
+# gem 'devise'
+gem 'counter_culture'
+
+
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
@@ -36,7 +64,17 @@ gem 'jbuilder', '~> 2.5'
 # gem 'capistrano-rails', group: :development
 
 group :development, :test do
+  gem 'sqlite3'
   gem 'byebug', platform: :mri
+  gem 'pry-rails'
+  gem 'pry-doc'
+  gem 'pry-byebug'
+  gem 'pry-stack_explorer'
+  gem 'dotenv-rails'
+  gem 'rails-erd'
+  gem 'scss_lint', require: false
+  gem 'faker'
+  gem 'gimei'
 end
 
 group :development do
@@ -45,7 +83,13 @@ group :development do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'annotate'
+  gem 'letter_opener'
+  gem 'rubocop', require: false
+  gem 'bullet'
 end
 
-# Windows does not include zoneinfo files, so bundle the tzinfo-data gem
+group :production do
+  gem 'pg'
+end
+
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
