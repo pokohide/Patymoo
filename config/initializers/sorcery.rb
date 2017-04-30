@@ -92,7 +92,8 @@ Rails.application.config.sorcery.configure do |config|
 
   # --- user config ---
   config.user_config do |user|
-    user.username_attribute_names = [:email]
+    # user.username_attribute_names = [:email]
+    user.username_attribute_names = %i(email username)
     # user.user_activation_mailer = UserMailer
     user.user_activation_mailer = AdminMailer
     user.activation_token_attribute_name = :activation_code
