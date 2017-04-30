@@ -21,4 +21,6 @@ $(document).ready(function() {
   $('.ui.checkbox').checkbox()
   // $('.special.cards .image').dimmer({ on: 'hover' })
   // $('img.lazy').lazyload({ effect : "fadeIn" })
+
+  // $('.ui.sidebar').sidebar('attach events', '.toc.item')  
 })

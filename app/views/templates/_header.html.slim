@@ -1,6 +1,6 @@
-.ui.large.top.fixed.menu
+.ui.large.secondary.pointing.top.fixed.menu
   .ui.container
-    = link_to '#', class: 'header item' do
+    = link_to root_path, class: 'header item' do
       = image_tag 'party.png', class: 'logo'
 
     .right.menu
@@ -29,3 +29,11 @@
       .item
         = link_to '#' do
           i.write.icon
+
+.ui.vertical.inverted.sidebar.menu
+  a.active.item Home
+  a.item Work
+  a.item Company
+  a.item Careers
+  a.item Login
+  a.item Signup

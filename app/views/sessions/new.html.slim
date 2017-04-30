@@ -21,16 +21,11 @@
         .field
           .ui.checkbox
             = check_box_tag :remember_me, 1, params[:remember_me], class: 'input'
-          span 1週間、ログイン情報を保持する
+            label 1週間、ログイン情報を保持する
         = submit_tag 'ログイン', class: 'ui fluid large teal submit button'
     .ui.message
       p
         = link_to new_admin_path, style: 'color:#333' do
           | 新規登録する
       p
-        = form_tag password_resets_path, method: :post do
-          .field
-            .ui.left.icon.input
-              i.mail.outline.icon
-              = text_field_tag :email, '', class: 'input', placeholder: 'メールアドレス ( パスワードを忘れた ) '
-            = submit_tag '再発行', class: 'ui submit button'
+        == render 'forgot_password_form'

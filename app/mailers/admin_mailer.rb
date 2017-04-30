@@ -21,7 +21,7 @@ class AdminMailer < ActionMailer::Base
   end
 
   def reset_password_email(admin)
-    @admin = admin
+    @admin = Admin.find(admin.id)
     # @club = @user.try(:club)
     @url  = edit_password_reset_url(@admin.reset_password_token)
     mail to: admin.email,

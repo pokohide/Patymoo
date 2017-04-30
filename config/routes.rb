@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  root to: 'sites#index'
 
   resources :admins, only: [:new, :create, :show] do
     member do

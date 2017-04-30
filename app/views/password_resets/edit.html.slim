@@ -1,0 +1,27 @@
+/ - content_for :header do
+/  = render 'templates/breadcrumb', breadcrumb: { 'ログイン画面': login_path }
+
+/- title = 'ログイン画面'
+/- set_seo(title: title, noindex: true)
+
+.ui.middle.aligned.center.aligned.grid
+  .column
+    h2.ui.teal.header
+      .content 新しいパスワードを入力する
+    = form_for(@admin, url: password_resets_path(@admin), html: { class: 'ui large form', method: :put }) do |f|
+      = render 'shared/error_messages', object: f.object
+      .ui.stacked.segment
+        .field
+          .ui.left.icon.input
+            i.mail.outline.icon
+            = f.text_field :email, placeholder: 'メールアドレス', class: 'input'
+        .field
+          .ui.left.icon.input
+            i.lock.icon
+            = f.password_field :password, placeholder: 'パスワード', class: 'input', autocomplete: 'off'
+          span.note 半角英数記号6〜20文字
+        .field
+          .ui.left.icon.input
+            i.lock.icon
+            = f.password_field :password_confirmation, placeholder: 'パスワード確認', class: 'input', autocomplete: 'off'
+        = f.submit 'パスワードを更新', class: 'ui fluid large teal submit button'
