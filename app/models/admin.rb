@@ -11,9 +11,13 @@
 #  updated_at                   :datetime         not null
 #  remember_me_token            :string
 #  remember_me_token_expires_at :datetime
+#  activation_state             :string
+#  activation_token             :string
+#  activation_token_expires_at  :datetime
 #
 # Indexes
 #
+#  index_admins_on_activation_token   (activation_token)
 #  index_admins_on_email              (email) UNIQUE
 #  index_admins_on_remember_me_token  (remember_me_token)
 #
