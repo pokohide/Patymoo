@@ -49,7 +49,6 @@ gem 'bcrypt'
 gem 'counter_culture'
 
 # API
-# gem 'yajl-ruby' 
 gem 'jbuilder', '~> 2.5'
 
 group :development, :test do
