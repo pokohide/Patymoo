@@ -7,7 +7,7 @@ class SessionsController < ApplicationController
 
   def create
     if @admin = login(*login_params)
-      redirect_back_or_to admin_path(admin), notice: 'ログインしました。'
+      redirect_back_or_to admin_path(@admin), notice: 'ログインしました。'
     else
       invalid_admin = Admin.find_by(email: params[:email])
       flash.now[:alert] = if invalid_admin.presence? && invalid_admin.locked?
