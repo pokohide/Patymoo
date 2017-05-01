@@ -33,6 +33,7 @@
 class Admin < ApplicationRecord
   authenticates_with_sorcery!
 
+  # Validation
   validates :username, presence: true, uniqueness: true
   validates :email, presence: true, uniqueness: true
   validates :password, presence: true, length: { minimum: 6 },
@@ -41,4 +42,7 @@ class Admin < ApplicationRecord
       if: -> { new_record? || changes[:crypted_password] }
   validates :password_confirmation, presence: true,
     if: -> { new_record? || changes[:crypted_password] }
+
+  # References
+  has_many :events, dependent: :destroy
 end
