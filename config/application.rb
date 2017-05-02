@@ -11,6 +11,7 @@ module Party
     config.generators do |g|
       g.stylesheets false
       g.javascripts false
-    end
+      g.orm :active_record
+    end  
   end
 end
