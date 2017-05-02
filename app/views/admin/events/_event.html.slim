@@ -1,0 +1,8 @@
+- cache(event) do
+  section.item
+    .content
+      .header = event.name
+      .meta
+        span = distance_of_time_in_words_to_now(event.created_at)
+      .description
+        = event.description

@@ -3,14 +3,40 @@ class Admin::EventsController < ApplicationController
   before_action :set_admin
 
   def index
+    @events = @admin.events
   end
 
   def new
     @event = @admin.events.build
   end
 
+  def create
+    @event = @admin.events.new(event_params)
+    if @event.save
+      redirect_to admin_events_path, notice: 'イベントを追加しました。'
+    else
+      render :new, notice: 'イベントの追加に失敗しました。'
+    end
+  end
+
+  def edit
+
+  end
+
+  def update
+
+  end
+
+  def destroy
+
+  end
+
   private
   def set_admin
     redirect_to login_path, notice: 'ログインしてください。' unless @admin = current_user
+  end
+
+  def event_params
+    params.require(:event).permit(:name, :link, :description, :start_at)
   end
 end

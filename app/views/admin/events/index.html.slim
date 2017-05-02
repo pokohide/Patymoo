@@ -1,0 +1,9 @@
+.ui.items
+  
+  
+.ui.container
+  .ui.items
+    - cache(['events', @events.map(&:id), @events.maximum(:updated_at)]) do
+      = render @events
+
+  / = paginate @events
