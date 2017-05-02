@@ -1,6 +1,4 @@
 Rails.application.routes.draw do
-  root to: 'sites#index'
-
   resources :admins, only: [:new, :create, :show] do
     member do
       get :activate
@@ -12,4 +10,20 @@ Rails.application.routes.draw do
   get 'signup' => 'admins#new', as: 'signup'
   get 'login' => 'sessions#new', as: 'login'
   delete 'logout' => 'sessions#destroy', as: 'logout'
+
+  # Admin
+  # constraints subdomain: 'admin' do
+  #   namespace :admin, path: '/' do
+  #     # root 'sites#index'
+  #   end
+  # end
+
+  namespace :admin, path: '/' do
+    constraints subdomain: 'admin' do
+      get '/dashboard' => 'sites#index'
+      root 'admins#index'
+    end
+  end
+
+  root to: 'sites#index'
 end
