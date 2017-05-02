@@ -13,14 +13,17 @@
 //= require jquery
 //= require jquery_ujs
 //= require semantic-ui
-//= require turbolinks
-//= require_tree .
 
-$(document).ready(function() {
+$(document).ready(() => {
   $('.ui.dropdown').dropdown({ on: 'hover' })
   $('.ui.checkbox').checkbox()
-  // $('.special.cards .image').dimmer({ on: 'hover' })
-  // $('img.lazy').lazyload({ effect : "fadeIn" })
-
-  // $('.ui.sidebar').sidebar('attach events', '.toc.item')
 })
+
+// $(document).ready(function() {
+//   $('.ui.dropdown').dropdown({ on: 'hover' })
+//   $('.ui.checkbox').checkbox()
+//   // $('.special.cards .image').dimmer({ on: 'hover' })
+//   // $('img.lazy').lazyload({ effect : "fadeIn" })
+//
+//   // $('.ui.sidebar').sidebar('attach events', '.toc.item')
+// })
