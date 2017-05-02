@@ -12,4 +12,9 @@ Rails.application.routes.draw do
   get 'signup' => 'admins#new', as: 'signup'
   get 'login' => 'sessions#new', as: 'login'
   delete 'logout' => 'sessions#destroy', as: 'logout'
+
+  namespace :admin do
+    get '/' => 'admins#index', as: 'dashboard'
+    resources :events
+  end
 end
