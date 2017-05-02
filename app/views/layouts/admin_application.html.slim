@@ -8,6 +8,8 @@ body class="#{controller.class.parent.name} #{controller_name} #{action_name}"
   / == render 'templates/admin/side_button'
   == render 'templates/admin/header'
   section.pusher
+    .ui.text.container
+      = semantic_flash
     == yield
   footer
     == render 'templates/footer'
