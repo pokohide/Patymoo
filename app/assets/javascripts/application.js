@@ -19,8 +19,9 @@
 $(document).ready(function() {
   $('.ui.dropdown').dropdown({ on: 'hover' })
   $('.ui.checkbox').checkbox()
+  $('#calendar').calendar()
   // $('.special.cards .image').dimmer({ on: 'hover' })
   // $('img.lazy').lazyload({ effect : "fadeIn" })
 
-  // $('.ui.sidebar').sidebar('attach events', '.toc.item')  
+  // $('.ui.sidebar').sidebar('attach events', '.toc.item')
 })

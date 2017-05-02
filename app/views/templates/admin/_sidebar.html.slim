@@ -1,7 +1,16 @@
-section.ui.visible.inverted.left.vertical.sidebar.menu
+section.ui.visible.inverted.left.vertical.sidebar.menu#toc
+  .item(style='background:#eee')
+    = link_to root_path do
+      = image_tag 'party.png', class: 'ui logo icon image'
+
   = link_to admin_dashboard_path, class: 'item' do
     i.home.icon
     | ダッシュボード
+  
+  = link_to '#', class: 'item' do
+    i.user.icon
+    | 参加者
+
   = link_to admin_events_path, class: 'item' do
     i.calendar.icon
     | イベント
