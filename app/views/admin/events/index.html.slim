@@ -1,31 +1,37 @@
-.ui.container
+.ui.container.top-margin.margin-60
 
   h4.ui.horizontal.divider.header
     i.bar.chart.icon
     | イベント情報
 
-  .ui.four.statistics
-    .statistic.orage
-      .value 22
-      .label Saves
-    .statistic.red
-      .text.value
-        | Three
-        br
-        | Thousand
-      .label Signups
-    .statistic.green
-      .value
-        i.plane.icon
-        | 5
-      .label Flights
-    .statistic.gray
-      .value 42
-      .label Team Members
+  .ui.very.padded.container.segment
+    .ui.four.statistics
+      .statistic.orage
+        .value 22
+        .label Saves
+      .statistic.red
+        .text.value
+          | Three
+          br
+          | Thousand
+        .label Signups
+      .statistic.green
+        .value
+          i.plane.icon
+          | 5
+        .label Flights
+      .statistic.gray
+        .value 42
+        .label Team Members
 
-.ui.container
+.ui.container.top-margin.margin-60
+
+  h4.ui.horizontal.divider.header
+    i.calendar.icon
+    | イベント一覧
+
   .ui.items
     - cache(['events', @events.map(&:id), @events.maximum(:updated_at)]) do
       = render @events
 
-  / = paginate @events
+  = paginate @events

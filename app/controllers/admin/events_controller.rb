@@ -3,7 +3,7 @@ class Admin::EventsController < ApplicationController
   before_action :set_admin
 
   def index
-    @events = @admin.events
+    @events = @admin.events.page(params[:page]).per(18)
   end
 
   def new

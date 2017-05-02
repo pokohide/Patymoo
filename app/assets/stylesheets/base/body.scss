@@ -1,3 +1,26 @@
 body.Object {
   padding-top: 64px;
 }
+
+
+.top-margin {
+
+  &.margin-30 {
+    margin-top: 30px;
+  }
+
+  &.margin-60 {
+    margin-top: 60px;
+  }
+}
+
+.bottom-margin {
+
+  &.margin-30 {
+    margin-bottom: 30px;
+  }
+
+  &.margin-60 {
+    margin-bottom: 60px;
+  }
+}
