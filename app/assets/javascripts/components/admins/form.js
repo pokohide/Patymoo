@@ -1,4 +1,4 @@
-$(document).ready(function() {
+$('.admins.new, .admins.create').ready(() => {
   $('.ui.form').form({
     fields: {
       email: {
@@ -24,11 +24,6 @@ $(document).ready(function() {
     },
     inline: true,
     on: 'blur'
-  })
-
-  $('#toc-open-button').on('click', function(e) {
-    e.preventDefault()
-    $('.ui.sidebar#sidebar').sidebar('toggle')
   })
 
   $('#calendar').calendar({

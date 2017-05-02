@@ -14,16 +14,12 @@
 //= require jquery_ujs
 //= require semantic-ui
 
+import 'libs/base'
+import 'components/base'
+
 $(document).ready(() => {
   $('.ui.dropdown').dropdown({ on: 'hover' })
   $('.ui.checkbox').checkbox()
-})
 
-// $(document).ready(function() {
-//   $('.ui.dropdown').dropdown({ on: 'hover' })
-//   $('.ui.checkbox').checkbox()
-//   // $('.special.cards .image').dimmer({ on: 'hover' })
-//   // $('img.lazy').lazyload({ effect : "fadeIn" })
-//
-//   // $('.ui.sidebar').sidebar('attach events', '.toc.item')
-// })
+  // $('img.lazy').lazyload({ effect : "fadeIn" })
+})
