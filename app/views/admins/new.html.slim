@@ -1,7 +1,8 @@
-/ - content_for :header do
-/  = render 'templates/breadcrumb', breadcrumb: { 'サークル管理者の新規登録': signup_path }
-/ - title = 'サークル管理者の新規登録'
-/ - set_seo(title: title, noindex: true)
+- content_for :header do
+  = render 'shared/breadcrumb', breadcrumb: { '新規登録': signup_path }
+
+- title = '管理者の新規登録'
+- set_seo(title: title, noindex: true)
 
 .ui.middle.aligned.center.aligned.grid
   .column

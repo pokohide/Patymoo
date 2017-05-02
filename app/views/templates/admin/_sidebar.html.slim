@@ -1,4 +1,4 @@
-section.ui.visible.inverted.left.vertical.sidebar.menu#toc
+section.ui.inverted.left.vertical.sidebar.visible.uncover.menu#sidebar
   .item(style='background:#eee')
     = link_to root_path do
       = image_tag 'party.png', class: 'ui logo icon image'
@@ -10,6 +10,11 @@ section.ui.visible.inverted.left.vertical.sidebar.menu#toc
   = link_to '#', class: 'item' do
     i.user.icon
     | 参加者
+  
+  .item
+    .ui.icon.input
+      input(type='text' placeholder='参加者を検索...')
+      i.search.icon
 
   = link_to admin_events_path, class: 'item' do
     i.calendar.icon

@@ -1,0 +1,5 @@
+.ui.breadcrumb
+  = link_to 'トップページ', root_path
+  - breadcrumb.each do |page, url|
+    i.right.angle.icon.divider
+    = link_to page, url, class: 'section'

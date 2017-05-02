@@ -1,0 +1,8 @@
+html.ios {
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+
+  &, & body {
+    height: initial !important;
+  }
+}

@@ -2,6 +2,7 @@
   .ui.container
     a.toc-open-button.icon.item
       i.content.icon
+      | メニュー
 
     .right.menu
       .item
@@ -17,8 +18,7 @@
             b.username = current_user.username
             i.dropdown.icon
             .menu
-              / = link_to 'マイページ', '#', class: 'item'
-              / = link_to 'プロフィール編集', edit_admin_path(current_user), class: 'item'
+              = link_to 'ダッシュボード', admin_dashboard_path, class: 'item'
               = link_to 'ログアウト', logout_path, method: :delete, class: 'item'
       - else
         .item
@@ -26,14 +26,3 @@
             = link_to 'ログイン', login_path, class: 'ui positive button'
             .or
             = link_to 'サインイン', signup_path, class: 'ui button'
-      .item
-        = link_to '#' do
-          i.write.icon
-
-.ui.vertical.inverted.sidebar.menu
-  a.active.item Home
-  a.item Work
-  a.item Company
-  a.item Careers
-  a.item Login
-  a.item Signup

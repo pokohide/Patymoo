@@ -1,10 +1,9 @@
-/- content_for :header do
-/  = render 'templates/breadcrumb', breadcrumb: { '記事作成': '#' }
+- content_for :header do
+  = render 'shared/breadcrumb', breadcrumb: { 'イベント作成': new_admin_event_path }
 
 .ui.text.container
   .ui.main.text.container
     h1.ui.header イベントの作成
-    
     
   = form_for @event, url: admin_events_path, html: { method: :post, class: 'ui form' } do |f|
     = render 'shared/error_messages', object: f.object
