@@ -1,21 +1,31 @@
-section.ui.inverted.left.vertical.sidebar.visible.uncover.menu#sidebar
+section.ui.inverted.left.vertical.sidebar.large.menu#sidebar
   .item(style='background:#eee')
     = link_to root_path do
       = image_tag 'party.png', class: 'ui logo icon image'
 
   = link_to admin_dashboard_path, class: 'item' do
-    i.home.icon
+    i.bar.chart.icon
     | ダッシュボード
   
   = link_to '#', class: 'item' do
-    i.user.icon
+    i.child.icon
     | 参加者
   
   .item
-    .ui.icon.input
-      input(type='text' placeholder='参加者を検索...')
-      i.search.icon
+    .header イベント
+    .menu
+      = link_to admin_events_path, class: 'item' do
+        i.calendar.icon
+        | イベント一覧
+      = link_to new_admin_event_path, class: 'item' do
+        i.plus.square.outline.icon
+        | イベント追加
+      .item
+        .ui.icon.input
+          input(type='text' placeholder='参加者を検索...')
+          i.search.icon
 
-  = link_to admin_events_path, class: 'item' do
-    i.calendar.icon
-    | イベント
+  .item
+    .ui.tiny.red.inverted.progress(data-value='20' data-total='100')
+      .bar
+      .label 20GB / 100GB

@@ -1,6 +1,23 @@
-.ui.items
-  
-  
+.ui.container
+  .ui.four.statistics
+    .statistic.orage
+      .value 22
+      .label Saves
+    .statistic.red
+      .text.value
+        | Three
+        br
+        | Thousand
+      .label Signups
+    .statistic.green
+      .value
+        i.plane.icon
+        | 5
+      .label Flights
+    .statistic.gray
+      .value 42
+      .label Team Members
+
 .ui.container
   .ui.items
     - cache(['events', @events.map(&:id), @events.maximum(:updated_at)]) do
