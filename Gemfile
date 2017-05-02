@@ -9,6 +9,7 @@ gem 'rails', '~> 5.0.2'
 
 # gem 'sqlite3'
 gem 'pg'
+gem 'mongoid', '~> 6.1.0'
 
 # Server
 gem 'puma', '~> 3.0'

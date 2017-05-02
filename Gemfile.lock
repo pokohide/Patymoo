@@ -61,6 +61,7 @@ GEM
     bindex (0.5.0)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
+    bson (4.2.1)
     builder (3.2.3)
     bullet (5.5.1)
       activesupport (>= 3.0.0)
@@ -136,6 +137,11 @@ GEM
     mime-types-data (3.2016.0521)
     mini_portile2 (2.1.0)
     minitest (5.10.1)
+    mongo (2.4.1)
+      bson (>= 4.2.1, < 5.0.0)
+    mongoid (6.1.0)
+      activemodel (~> 5.0)
+      mongo (>= 2.4.1, < 3.0.0)
     multi_json (1.12.1)
     multi_xml (0.6.0)
     multipart-post (2.0.0)
@@ -304,6 +310,7 @@ DEPENDENCIES
   letter_opener
   listen (~> 3.0.5)
   meta-tags
+  mongoid (~> 6.1.0)
   pg
   pry-byebug
   pry-doc
