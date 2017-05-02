@@ -1,15 +1,13 @@
 doctype html
 head
   == render 'templates/head'
-body class="#{controller_name} #{action_name}"
-  header
-    
-    == yield :header
-  main
-    / = flash_message(flash: flash, notice: notice, alert: alert)
-    == render 'templates/admin/sidebar'
-    == render 'templates/admin/header'
-    section.pusher
-      == yield
+body class="#{controller.class.parent.name} #{controller_name} #{action_name}"
+  == yield :header
+  / = flash_message(flash: flash, notice: notice, alert: alert)
+  == render 'templates/admin/sidebar'
+  / == render 'templates/admin/side_button'
+  == render 'templates/admin/header'
+  section.pusher
+    == yield
   footer
     == render 'templates/footer'

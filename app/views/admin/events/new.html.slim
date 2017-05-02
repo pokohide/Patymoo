@@ -20,7 +20,7 @@
     .field
       label.label = f.label :link, '詳細リンク'
       .ui.labeled.input
-        .ui.label http://
+        .ui.label http://        
         = f.text_field :link, placeholder: '例) www.othlo.tech'
     
     .field
@@ -34,4 +34,4 @@
       label.label = f.label :description, '詳細'
       = f.text_area :description, rows: 4, placeholder: '...'
 
-    = f.submit '作成する', class: 'ui primary button'
+    = f.submit '作成する', class: 'ui teal fluid button'

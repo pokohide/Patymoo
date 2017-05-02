@@ -1,4 +1,4 @@
-section.ui.inverted.left.vertical.sidebar.large.menu#sidebar
+.ui.inverted.left.vertical.sidebar.large.menu#sidebar
   .item(style='background:#eee')
     = link_to root_path do
       = image_tag 'party.png', class: 'ui logo icon image'
@@ -6,10 +6,17 @@ section.ui.inverted.left.vertical.sidebar.large.menu#sidebar
   = link_to admin_dashboard_path, class: 'item' do
     i.bar.chart.icon
     | ダッシュボード
-  
-  = link_to '#', class: 'item' do
-    i.child.icon
-    | 参加者
+
+  .item
+    .header 参加者
+    .menu
+      = link_to '#', class: 'item' do
+        i.child.icon
+        | 参加者一覧
+      
+      = link_to '#', class: 'item' do
+        i.add.user.icon
+        | 参加者追加
   
   .item
     .header イベント
@@ -21,9 +28,13 @@ section.ui.inverted.left.vertical.sidebar.large.menu#sidebar
         i.plus.square.outline.icon
         | イベント追加
       .item
-        .ui.icon.input
+        .ui.icon.inverted.input
           input(type='text' placeholder='参加者を検索...')
           i.search.icon
+
+  = link_to '#', class: 'item' do
+    i.setting.icon
+    | 設定
 
   .item
     .ui.tiny.red.inverted.progress(data-value='20' data-total='100')

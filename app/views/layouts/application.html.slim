@@ -1,7 +1,7 @@
 doctype html
 head
   == render 'templates/head'
-body class="#{controller_name} #{action_name}"
+body class="#{controller.class.parent.name} #{controller_name} #{action_name}"
   header
     == render 'templates/header'
     == yield :header

@@ -26,10 +26,9 @@ $(document).ready(function() {
     on: 'blur'
   })
 
-
-  $('.toc-open-button').on('click', function(e) {
+  $('#toc-open-button').on('click', function(e) {
     e.preventDefault()
-    $('.ui.sidebar#sidebar').sidebar('push page')
+    $('.ui.sidebar#sidebar').sidebar('toggle')
   })
 
   $('#calendar').calendar({
@@ -43,5 +42,4 @@ $(document).ready(function() {
       pm: 'PM'
     }
   })
-
 })
