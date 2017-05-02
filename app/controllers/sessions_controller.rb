@@ -10,11 +10,12 @@ class SessionsController < ApplicationController
       redirect_back_or_to admin_path(@admin), notice: 'ログインしました。'
     else
       invalid_admin = Admin.find_by(email: params[:email])
-      flash.now[:alert] = if invalid_admin.presence? && invalid_admin.locked?
-                            'このアカウントはロックされています。'
-                          else
-                            'メールアドレスかパスワードが不適切です。'
-                          end
+      # flash.now[:alert] = if invalid_admin.present? && invalid_admin&.locked?
+      #                       'このアカウントはロックされています。'
+      #                     else
+      #                       'メールアドレスかパスワードが不適切です。'
+      #                     end
+      flash.now[:alert] = 'メールアドレスかパスワードが不適切です。'
       render :new
     end
   end
