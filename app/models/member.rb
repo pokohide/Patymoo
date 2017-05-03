@@ -4,8 +4,7 @@ class Member
   include Tenacity
   # include Mongoid::Enum
 
-  # authenticates_with_sorcery!
-
+  authenticates_with_sorcery!
   field :admin_id, type: Integer
   field :name, type: String
   field :email, type: String
@@ -17,6 +16,7 @@ class Member
   field :school_type, type: Integer
   field :school_name, type: String
   field :department, type: String
+  field :phone_number, type: String
 
   # References
   t_belongs_to :admin
