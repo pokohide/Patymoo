@@ -31,6 +31,7 @@
 #
 
 class Admin < ApplicationRecord
+  include Tenacity
   authenticates_with_sorcery!
 
   # Validation
@@ -45,4 +46,5 @@ class Admin < ApplicationRecord
 
   # References
   has_many :events, dependent: :destroy
+  t_has_many :members, dependent: :destroy
 end
