@@ -10,8 +10,6 @@ gem 'rails', '~> 5.0.2'
 # DB
 # gem 'sqlite3'
 gem 'pg'
-gem 'mongoid', git: 'https://github.com/mongodb/mongoid.git'
-gem 'tenacity'
 
 # Server
 gem 'puma', '~> 3.0'

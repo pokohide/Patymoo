@@ -23,13 +23,14 @@
 #  index_members_on_admin_id  (admin_id)
 #
 
-class Member < ApplicationRecord
-  # Validates
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-  # References
-  belongs_to :admin
-  has_many :event_members, dependent: :destroy
-  has_many :events, through: :event_members
-
-  accepts_nested_attributes_for :event_members, allow_destroy: true
-end
+# This model initially had no columns defined. If you add columns to the
+# model remove the '{}' from the fixture names and add the columns immediately
+# below each fixture, per the syntax in the comments below
+#
+one: {}
+# column: value
+#
+two: {}
+# column: value

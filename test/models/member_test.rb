@@ -23,13 +23,10 @@
 #  index_members_on_admin_id  (admin_id)
 #
 
-class Member < ApplicationRecord
-  # Validates
+require 'test_helper'
 
-  # References
-  belongs_to :admin
-  has_many :event_members, dependent: :destroy
-  has_many :events, through: :event_members
-
-  accepts_nested_attributes_for :event_members, allow_destroy: true
+class MemberTest < ActiveSupport::TestCase
+  # test "the truth" do
+  #   assert true
+  # end
 end

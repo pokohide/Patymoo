@@ -14,7 +14,7 @@
 #  activation_state                :string
 #  activation_token                :string
 #  activation_token_expires_at     :datetime
-#  failed_logins_count             :integer          default("0")
+#  failed_logins_count             :integer          default(0)
 #  lock_expires_at                 :datetime
 #  unlock_token                    :string
 #  reset_password_token            :string

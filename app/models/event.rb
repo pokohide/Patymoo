@@ -17,5 +17,12 @@
 #
 
 class Event < ApplicationRecord
+  # Validation
+
+  # References
   belongs_to :admin
+  has_many :event_members, dependent: :destroy
+  has_many :members, through: :event_members
+
+  accepts_nested_attributes_for :event_members, allow_destroy: true
 end
