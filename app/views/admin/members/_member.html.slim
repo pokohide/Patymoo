@@ -1,6 +1,6 @@
 tr
   td = member.name
-  td = member.email
-  td = "@#{member.twitter}"
-  / td = member.facebook
-  / td = member.connpass
+  td = mail_link member.email
+  td = twitter_link member.twitter
+  td = facebook_link member.facebook
+  td = connpass_link member.connpass
