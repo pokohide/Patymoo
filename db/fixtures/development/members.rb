@@ -1,9 +1,9 @@
 Faker::Config.locale = :ja
 
-1.upto(100).each do |i|
+1.upto(200).each do |i|
   Member.seed(:id) do |member|
     member.id = i
-    member.admin_id = i % 30 + 1
+    member.admin_id = i % 10 + 1
     member.name = Faker::Name.name
     member.email = Faker::Internet.free_email
     screen_name = Faker::Ancient.hero
