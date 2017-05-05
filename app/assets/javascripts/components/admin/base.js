@@ -3,4 +3,6 @@ $('.Admin').ready(() => {
     e.preventDefault()
     $('.ui.sidebar#sidebar').sidebar('toggle')
   })
+
+  $('.ui.dropdown').dropdown()
 })

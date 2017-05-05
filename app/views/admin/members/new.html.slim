@@ -38,12 +38,34 @@
       = f.text_field :connpass, placeholder: 'OthloTech'
     
     .field
-      label.label = f.label :scholl_type, '学校のタイプ'
-      /= f.
-      
-    .field
-      label.label = f.label :note, '一言ノート'
-      = f.text_field :note, placeholder: '例) OthloTechが好き'
+      label.label = f.label :school_type, '学校のタイプ'
+      .ui.fluid.selection.dropdown
+        = f.hidden_field :school_type
+        i.dropdown.icon
+        .text
+        .menu
+          - Member.school_types.keys.to_a.each do |type|
+            .item(data-value="#{type}")
+              = type
+    
+    .fields
+      .six.wide.field
+        label.label = f.label :school_name, '学校名'
+        = f.text_field :school_name, placeholder: '例) Othlo大学'
+      .six.wide.field
+        label.label = f.label :department, '学部名'
+        = f.text_field :department, placeholder: '例) Othlo学部'
+
+      .four.wide.field
+        label.label = f.label :grade, '学年'
+        .ui.fluid.selection.dropdown
+          = f.hidden_field :grade
+          i.dropdown.icon
+          .text
+          .menu
+            - Member.grades.keys.to_a.each do |grade|
+              .item(data-value="#{grade}")
+                = grade
 
     .fields
       label.label = f.label :phone_number, '電話番号'
@@ -53,6 +75,10 @@
         = f.text_field :phone_number, placeholder: 'xxx'
       .field
         = f.text_field :phone_number, placeholder: 'xxxx'
+  
+    .field
+      label.label = f.label :note, '一言ノート'
+      = f.text_field :note, placeholder: '例) OthloTechが好き'
     
     = f.submit '追加する', class: 'ui teal fluid button'
 

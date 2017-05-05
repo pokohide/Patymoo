@@ -44,6 +44,7 @@ gem 'semantic-ui-sass', github: 'doabit/semantic-ui-sass'
 
 # ENV
 gem 'dotenv-rails'
+gem 'enum_help'
 
 # User
 gem 'sorcery'
