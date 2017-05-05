@@ -10,6 +10,10 @@ class Admin::MembersController < ApplicationController
     @member = @admin.members.build
   end
 
+  def show
+    @member = @admin.members.find(params[:id])
+  end
+
   def create
     @member = @admin.members.new(member_params)
     if @member.save
