@@ -14,7 +14,7 @@
 #  activation_state                :string
 #  activation_token                :string
 #  activation_token_expires_at     :datetime
-#  failed_logins_count             :integer          default("0")
+#  failed_logins_count             :integer          default(0)
 #  lock_expires_at                 :datetime
 #  unlock_token                    :string
 #  reset_password_token            :string
@@ -31,7 +31,6 @@
 #
 
 class Admin < ApplicationRecord
-  include Tenacity
   authenticates_with_sorcery!
 
   # Validation
@@ -46,5 +45,5 @@ class Admin < ApplicationRecord
 
   # References
   has_many :events, dependent: :destroy
-  t_has_many :members, dependent: :destroy
+  has_many :members, dependent: :destroy
 end
