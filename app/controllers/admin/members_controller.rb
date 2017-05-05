@@ -12,7 +12,7 @@ class Admin::MembersController < ApplicationController
 
   def create
     @member = @admin.members.new(member_params)
-    if @memner.save
+    if @member.save
       redirect_to admin_members_path, notice: 'メンバーを追加しました。'
     else
       render :new, notice: 'メンバーの追加に失敗しました。'

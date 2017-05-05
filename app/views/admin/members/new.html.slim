@@ -67,15 +67,10 @@
               .item(data-value="#{value}")
                 = key
 
-    .fields
+    .field
       label.label = f.label :phone_number, '電話番号'
-      .field
-        = f.text_field :phone_number, placeholder: '(xxx)'
-      .field
-        = f.text_field :phone_number, placeholder: 'xxx'
-      .field
-        = f.text_field :phone_number, placeholder: 'xxxx'
-  
+      = f.text_field :phone_number, placeholder: '(xxx) - xxx - xxxx'
+
     .field
       label.label = f.label :note, '一言ノート'
       = f.text_field :note, placeholder: '例) OthloTechが好き'
