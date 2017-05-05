@@ -20,6 +20,8 @@
 #  reset_password_token            :string
 #  reset_password_token_expires_at :datetime
 #  reset_password_email_sent_at    :datetime
+#  evens_count                     :integer          default(0), not null
+#  members_count                   :integer          default(0), not null
 #
 # Indexes
 #
