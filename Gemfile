@@ -18,16 +18,13 @@ gem 'puma', '~> 3.0'
 # gem 'aws-sdk', '< 2.0'
 # gem 'paperclip', '~>4'
 
-# Enum
-# gem 'rails-i18n'
-# gem 'enum_help'
-
 # SEO
 gem 'meta-tags'
 gem 'sitemap_generator'
 
 # Data
 gem 'seed-fu', '~> 2.3'
+gem 'faker'
 
 # Frontend
 gem 'gon'
@@ -44,6 +41,7 @@ gem 'semantic-ui-sass', github: 'doabit/semantic-ui-sass'
 
 # ENV
 gem 'dotenv-rails'
+gem 'enum_help'
 
 # User
 gem 'sorcery'

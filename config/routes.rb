@@ -16,5 +16,6 @@ Rails.application.routes.draw do
   namespace :admin do
     get '/' => 'admins#index', as: 'dashboard'
     resources :events
+    resources :members
   end
 end
