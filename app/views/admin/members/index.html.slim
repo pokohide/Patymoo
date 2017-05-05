@@ -1,0 +1,49 @@
+.ui.container.top-margin.margin-60
+
+  h4.ui.horizontal.divider.header
+    i.bar.chart.icon
+    | メンバー情報
+
+  .ui.very.padded.container.segment
+    .ui.four.statistics
+      .statistic.orage
+        .value 22
+        .label Members
+      .statistic.red
+        .text.value
+          | Three
+          br
+          | Thousand
+        .label Signups
+      .statistic.green
+        .value
+          i.plane.icon
+          | 5
+        .label Flights
+      .statistic.gray
+        .value 42
+        .label Team Members
+
+.ui.container.top-margin.margin-60
+
+  h4.ui.horizontal.divider.header
+    i.calendar.icon
+    | メンバ-一覧
+    
+  table.ui.compact.celled.definition.table
+    thead.full-width
+      tr
+        th
+        th 名前
+        th Eメール
+        th hoge
+    tbody
+      = render @members
+    tfood.full-width
+      tr
+        th
+        th(colspan='4')
+          .ui.right.floated.small.primary.labeled.icon.button
+            i.user.icon
+            | メンバー追加
+  = paginate @members

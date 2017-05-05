@@ -1,4 +1,4 @@
-class MembersController < ApplicationController
+class Admin::MembersController < ApplicationController
   layout 'admin_application'
   before_action :set_admin
 

@@ -1,0 +1,62 @@
+- content_for :header do
+  = render 'shared/breadcrumb', breadcrumb: { 'メンバ一覧': admin_members_path, \
+    'メンバー追加': new_admin_member_path }
+
+.ui.text.container
+  .ui.main.text.container
+    h1.ui.header メンバーの追加
+    
+  = form_for @member, url: admin_members_path, html: { method: :post, class: 'ui form' } do |f|
+    = render 'shared/error_messages', object: f.object
+    
+    /= image_tag 'noimage.png', class: 'large ui centered image preview-image'
+    /.field
+    /  label.label.required = f.label :image, 'イメージ'
+    /  = f.file_field :image, id: 'watch-image'
+
+    .field.required
+      label.label = f.label :name, '名前'
+      = f.text_field :name, placeholder: '例) オスロ徹子'
+
+    .field
+      label.label = f.label :email, 'メールアドレス'   
+      = f.text_field :email, placeholder: '例) othlotech@gmail.com'
+    
+    .fields
+      .eight.wide.field
+        label.label = f.label :twitter, 'Twitter'
+        .ui.labeled.input
+          .ui.label @
+          = f.text_field :twitter, placeholder: 'OthloTech'
+    
+      .eight.wide.field
+        label.label = f.label :facebook, 'facebook'
+        = f.text_field :facebook, placeholder: 'OthloTech'
+    
+    .field
+      label.label = f.label :connpass, 'connpass'
+      = f.text_field :connpass, placeholder: 'OthloTech'
+    
+    .field
+      label.label = f.label :scholl_type, '学校のタイプ'
+      /= f.
+      
+    .field
+      label.label = f.label :note, '一言ノート'
+      = f.text_field :note, placeholder: '例) OthloTechが好き'
+
+    .fields
+      label.label = f.label :phone_number, '電話番号'
+      .field
+        = f.text_field :phone_number, placeholder: '(xxx)'
+      .field
+        = f.text_field :phone_number, placeholder: 'xxx'
+      .field
+        = f.text_field :phone_number, placeholder: 'xxxx'
+    
+    = f.submit '追加する', class: 'ui teal fluid button'
+
+  /    #  grade        :integer
+  /    #  school_type  :integer
+  /    #  school_name  :string
+  /    #  department   :string
