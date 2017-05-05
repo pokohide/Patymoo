@@ -2,7 +2,7 @@
 
   h4.ui.horizontal.divider.header
     i.bar.chart.icon
-    | メンバー情報
+    | メンバ情報
 
   .ui.very.padded.container.segment
     .ui.four.statistics
@@ -28,22 +28,22 @@
 
   h4.ui.horizontal.divider.header
     i.calendar.icon
-    | メンバ-一覧
+    | メンバ一覧
     
-  table.ui.compact.celled.definition.table
+  table.ui.sortable.striped.red.table
     thead.full-width
       tr
-        th
         th 名前
         th Eメール
-        th hoge
+        th Twitter
     tbody
       = render @members
-    tfood.full-width
+    tfoot.full-width
       tr
-        th
-        th(colspan='4')
-          .ui.right.floated.small.primary.labeled.icon.button
-            i.user.icon
-            | メンバー追加
-  = paginate @members
+        th(colspan='3')
+          = paginate @members
+      / tr
+      /   th(colspan='4')
+      /     .ui.right.floated.small.primary.labeled.icon.button
+      /       i.user.icon
+      /       | メンバー追加
