@@ -2,14 +2,15 @@
 #
 # Table name: events
 #
-#  id          :integer          not null, primary key
-#  admin_id    :integer
-#  name        :string(64)       not null
-#  description :text
-#  link        :string
-#  start_at    :datetime
-#  created_at  :datetime         not null
-#  updated_at  :datetime         not null
+#  id            :integer          not null, primary key
+#  admin_id      :integer
+#  name          :string(64)       not null
+#  description   :text
+#  link          :string
+#  start_at      :datetime
+#  created_at    :datetime         not null
+#  updated_at    :datetime         not null
+#  members_count :integer          default(0), not null
 #
 # Indexes
 #
