@@ -10,11 +10,11 @@
   .item
     .header 参加者
     .menu
-      = link_to '#', class: 'item' do
+      = link_to admin_members_path, class: 'item' do
         i.child.icon
         | 参加者一覧
       
-      = link_to '#', class: 'item' do
+      = link_to new_admin_member_path, class: 'item' do
         i.add.user.icon
         | 参加者追加
   
