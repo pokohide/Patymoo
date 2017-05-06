@@ -294,7 +294,7 @@ DEPENDENCIES
   bcrypt
   bullet
   byebug
-  counter_culture
+  counter_culture (~> 1.0)
   dotenv-rails
   enum_help
   faker

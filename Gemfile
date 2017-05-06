@@ -25,6 +25,7 @@ gem 'sitemap_generator'
 # Data
 gem 'seed-fu', '~> 2.3'
 gem 'faker'
+gem 'counter_culture', '~> 1.0'
 
 # Frontend
 gem 'gon'
@@ -46,7 +47,6 @@ gem 'enum_help'
 # User
 gem 'sorcery'
 gem 'bcrypt'
-gem 'counter_culture'
 
 # API
 gem 'jbuilder', '~> 2.5'

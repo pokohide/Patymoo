@@ -17,6 +17,7 @@
 #  note         :string
 #  created_at   :datetime         not null
 #  updated_at   :datetime         not null
+#  events_count :integer          default(0), not null
 #
 # Indexes
 #
@@ -34,6 +35,7 @@ class Member < ApplicationRecord
 
   # References
   belongs_to :admin
+  counter_culture :admin
   has_many :event_members, dependent: :destroy
   has_many :events, through: :event_members
 
