@@ -66,6 +66,7 @@ GEM
       activesupport (>= 3.0.0)
       uniform_notifier (~> 1.10.0)
     byebug (9.0.6)
+    chartkick (2.2.3)
     choice (0.2.0)
     coderay (1.1.1)
     concurrent-ruby (1.0.5)
@@ -294,6 +295,7 @@ DEPENDENCIES
   bcrypt
   bullet
   byebug
+  chartkick
   counter_culture (~> 1.0)
   dotenv-rails
   enum_help

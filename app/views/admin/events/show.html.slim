@@ -1,0 +1,38 @@
+- content_for :header do
+  = render 'shared/breadcrumb', breadcrumb: { "#{@event.name}": admin_event_path(@event) }
+
+.ui.text.container
+  .ui.main.text.container
+    h1.ui.header = @event.name
+  
+  .ui.very.padded.container.segment
+    table.ui.very.basic.padded.orange.table
+      tbody
+        tr
+          td.collapsing
+            i.calendar.outline.icon
+            | イベント名
+          td = @event.name
+        tr
+          td.collapsing
+            i.browser.icon
+            | イベント内容
+          td = @event.description
+
+        tr
+          td.collapsing
+            i.linkify.icon
+            | イベントリンク
+          td = link_to @event.link, @event.link, target: '_blank'
+        tr
+          td.collapsing
+            i.hourglass.start.icon
+            | 開始時間
+          td = @event.start_at
+      .tfoot.full-width
+        th(colspan='2')          
+          = link_to '削除する', admin_event_path(@event), method: :delete,
+            class: 'ui right floated negative button', data: { confirm: '本当に削除しますか?' }
+
+          = link_to '編集する', edit_admin_event_path(@event),
+            class: 'ui right floated positive button'

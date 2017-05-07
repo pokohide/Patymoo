@@ -1,0 +1,69 @@
+- content_for :header do
+  = render 'shared/breadcrumb', breadcrumb: { "#{@member.name}": admin_member_path(@member) }
+
+.ui.text.container
+  .ui.main.text.container
+    h1.ui.header = @member.name
+
+  .ui.very.padded.container.segment
+    table.ui.very.basic.padded.orange.table
+      tbody
+        tr
+          td.collapsing
+            i.user.icon
+            | 名前
+          td = @member.name
+        tr
+          td.collapsing
+            i.mail.outline.icon
+            | Eメール
+          td = mail_link @member.email
+
+        tr
+          td.collapsing
+            i.twitter.icon
+            | Twitter
+          td = twitter_link @member.twitter
+
+        tr
+          td.collapsing
+            i.facebook.icon
+            | Facebook
+          td = facebook_link @member.facebook
+  
+        tr
+          td.collapsing
+            i.compass.icon
+            | Conpass
+          td = connpass_link @member.connpass
+
+        tr
+          td.collapsing
+            i.idea.icon
+            | 学年
+          td = @member.grade_i18n
+
+        tr
+          td.collapsing
+            i.university.icon
+            | 学校
+          td = "#{@member.school_name} - #{@member.department} [#{@member.school_type_i18n}]"
+
+        tr
+          td.collapsing
+            i.call.icon
+            | 電話番号
+          td = @member.phone_number
+
+        tr
+          td.collapsing
+            i.comment.outline.icon
+            | 一言
+          td = @member.note
+      .tfoot.full-width
+        th(colspan='2')          
+          = link_to '削除する', admin_member_path(@member), method: :delete,
+            class: 'ui right floated negative button', data: { confirm: '本当に削除しますか?' }
+
+          = link_to '編集する', edit_admin_member_path(@member),
+            class: 'ui right floated positive button'

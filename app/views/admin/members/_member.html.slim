@@ -1,5 +1,5 @@
 tr
-  td = member.name
+  td = link_to member.name, admin_member_path(member)
   td = mail_link member.email
   td = twitter_link member.twitter
   td = facebook_link member.facebook
