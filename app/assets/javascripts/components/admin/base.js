@@ -5,11 +5,11 @@ $('.Admin').ready(() => {
   })
 
   $('.ui.dropdown').dropdown()
-  $('.ui.table').tablesort()
-  $('.ui.table').on('tablesort:start', function(event, tablesort) {
+  $('.ui.table.sortable').tablesort()
+  $('.ui.table.sortable').on('tablesort:start', function(event, tablesort) {
   	console.log("Starting the sort...");
   });
-  $('.ui.table').on('tablesort:complete', function(event, tablesort) {
+  $('.ui.table.sortable').on('tablesort:complete', function(event, tablesort) {
   	console.log("Sort finished!");
   });
 })

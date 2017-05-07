@@ -1,6 +1,7 @@
 class Admin::EventsController < ApplicationController
   layout 'admin_application'
   before_action :set_admin
+  before_action :set_event, only: [:show, :edit, :update, :destroy]
 
   def index
     @events = @admin.events.page(params[:page]).per(18)
@@ -11,7 +12,6 @@ class Admin::EventsController < ApplicationController
   end
 
   def show
-    @event = @admin.events.find(params[:id])
   end
 
   def create
@@ -24,20 +24,28 @@ class Admin::EventsController < ApplicationController
   end
 
   def edit
-    @event = Event.find(params[:id])
   end
 
   def update
-
+    if @event.update(event_params)
+      redirect_to admin_event_path(@event), notice: "「#{@event.name}」を更新しました。"
+    else
+      render :edit, notice: 'イベントの編集に失敗しました。'
+    end
   end
 
   def destroy
-
+    @event.destroy
+    redirect_to admin_events_path, notice: "「#{@event.name}」を削除しました。"
   end
 
   private
   def set_admin
     redirect_to login_path, notice: 'ログインしてください。' unless @admin = current_user
+  end
+
+  def set_event
+    @event = @admin.events.find(params[:id])
   end
 
   def event_params

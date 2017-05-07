@@ -3,9 +3,9 @@
 
 .ui.text.container
   .ui.main.text.container
-    h1.ui.header イベントの作成
+    h1.ui.header イベントの編集
     
-  = form_for @event, url: admin_events_path, html: { method: :put, class: 'ui form' } do |f|
+  = form_for @event, url: admin_event_path(@event), html: { method: :put, class: 'ui form' } do |f|
     = render 'shared/error_messages', object: f.object
 
     .field.required
@@ -23,10 +23,10 @@
       .ui.calendar#calendar
         .ui.input.left.icon
           i.time.icon
-          = f.text_field :start_at, placeholder: 'イベント日時'
+          = f.text_field :start_at, placeholder: 'イベント日時', value: @event.start_at
     
     .field
       label.label = f.label :description, '詳細'
       = f.text_area :description, rows: 4, placeholder: '...'
 
-    = f.submit '作成する', class: 'ui teal fluid button'
+    = f.submit '更新する', class: 'ui teal fluid button'
