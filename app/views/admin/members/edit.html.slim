@@ -1,0 +1,78 @@
+- content_for :header do
+  = render 'shared/breadcrumb', breadcrumb: { 'メンバ一覧': admin_members_path, \
+    'メンバー編集': admin_member_path(@member) }
+
+.ui.text.container
+  .ui.main.text.container
+    h1.ui.header メンバーの編集
+    
+  = form_for @member, url: admin_member_path(@member), html: { method: :put, class: 'ui form' } do |f|
+    = render 'shared/error_messages', object: f.object
+    
+    /= image_tag 'noimage.png', class: 'large ui centered image preview-image'
+    /.field
+    /  label.label.required = f.label :image, 'イメージ'
+    /  = f.file_field :image, id: 'watch-image'
+
+    .field.required
+      label.label = f.label :name, '名前'
+      = f.text_field :name, placeholder: '例) オスロ徹子'
+
+    .field
+      label.label = f.label :email, 'メールアドレス'   
+      = f.text_field :email, placeholder: '例) othlotech@gmail.com'
+    
+    .fields
+      .eight.wide.field
+        label.label = f.label :twitter, 'Twitter'
+        .ui.labeled.input
+          .ui.label @
+          = f.text_field :twitter, placeholder: 'OthloTech'
+    
+      .eight.wide.field
+        label.label = f.label :facebook, 'facebook'
+        = f.text_field :facebook, placeholder: 'OthloTech'
+    
+    .field
+      label.label = f.label :connpass, 'connpass'
+      = f.text_field :connpass, placeholder: 'OthloTech'
+    
+    .field
+      label.label = f.label :school_type, '学校のタイプ'
+      .ui.fluid.selection.dropdown
+        = f.hidden_field :school_type
+        i.dropdown.icon
+        .text
+        .menu
+          - Member.school_types_i18n.invert.each do |key, value|
+            .item(data-value="#{value}")
+              = key
+
+    .fields
+      .six.wide.field
+        label.label = f.label :school_name, '学校名'
+        = f.text_field :school_name, placeholder: '例) Othlo大学'
+      .six.wide.field
+        label.label = f.label :department, '学部名'
+        = f.text_field :department, placeholder: '例) Othlo学部'
+
+      .four.wide.field
+        label.label = f.label :grade, '学年'
+        .ui.fluid.selection.dropdown
+          = f.hidden_field :grade
+          i.dropdown.icon
+          .text
+          .menu
+            - Member.grades_i18n.invert.to_a.each do |key, value|
+              .item(data-value="#{value}")
+                = key
+
+    .field
+      label.label = f.label :phone_number, '電話番号'
+      = f.text_field :phone_number, placeholder: '(xxx) - xxx - xxxx'
+
+    .field
+      label.label = f.label :note, '一言ノート'
+      = f.text_field :note, placeholder: '例) OthloTechが好き'
+    
+    = f.submit '更新する', class: 'ui teal fluid button'

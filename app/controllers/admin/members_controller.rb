@@ -1,6 +1,7 @@
 class Admin::MembersController < ApplicationController
   layout 'admin_application'
   before_action :set_admin
+  before_action :set_member, only: [:show, :edit, :update, :destroy]
 
   def index
     @members = @admin.members.page(params[:page]).per(18)
@@ -30,18 +31,28 @@ class Admin::MembersController < ApplicationController
   end
 
   def edit
-    @member = @admin.members.find(params[:id])
   end
 
   def update
+    if @member.update(member_params)
+      redirect_to admin_member_path(@member), notice: "「#{@member.name}」を更新しました。"
+    else
+      render :edit, notice: 'メンバーの編集に失敗しました。'
+    end
   end
 
   def destroy
+    @member.destroy
+    redirect_to admin_members_path, notice: "「#{@member.name}」を削除しました。"
   end
 
   private
   def set_admin
     redirect_to login_path, notice: 'ログインしてください。' unless @admin = current_user
+  end
+
+  def set_member
+    @member = @admin.members.find(params[:id])
   end
 
   def member_params
