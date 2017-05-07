@@ -4,8 +4,7 @@ class Admin::MembersController < ApplicationController
 
   def index
     @members = @admin.members.page(params[:page]).per(18)
-    # @chart_data = Model.order('date ASC').group(:date).count
-    @chart_data = {'2014-04-01' => 60, '2014-04-02' => 65, '2014-04-03' => 64}
+    # @chart_data = {'2014-04-01' => 60, '2014-04-02' => 65, '2014-04-03' => 64}
 
     @grade_data = Member.group('grade').count
     @school_data = Member.group('school_name').count

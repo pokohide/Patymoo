@@ -1,0 +1,32 @@
+- content_for :header do
+  = render 'shared/breadcrumb', breadcrumb: { 'イベント編集': edit_admin_event_path(@event) }
+
+.ui.text.container
+  .ui.main.text.container
+    h1.ui.header イベントの作成
+    
+  = form_for @event, url: admin_events_path, html: { method: :put, class: 'ui form' } do |f|
+    = render 'shared/error_messages', object: f.object
+
+    .field.required
+      label.label = f.label :name, 'イベント名'
+      = f.text_field :name, placeholder: '例) WEB初心者勉強会'
+
+    .field
+      label.label = f.label :link, '詳細リンク'
+      .ui.labeled.input
+        .ui.label http://        
+        = f.text_field :link, placeholder: '例) www.othlo.tech'
+    
+    .field
+      label.label = f.label :start_at, 'イベント日時'
+      .ui.calendar#calendar
+        .ui.input.left.icon
+          i.time.icon
+          = f.text_field :start_at, placeholder: 'イベント日時'
+    
+    .field
+      label.label = f.label :description, '詳細'
+      = f.text_area :description, rows: 4, placeholder: '...'
+
+    = f.submit '作成する', class: 'ui teal fluid button'

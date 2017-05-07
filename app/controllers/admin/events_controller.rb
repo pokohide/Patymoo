@@ -10,6 +10,10 @@ class Admin::EventsController < ApplicationController
     @event = @admin.events.build
   end
 
+  def show
+    @event = @admin.events.find(params[:id])
+  end
+
   def create
     @event = @admin.events.new(event_params)
     if @event.save
