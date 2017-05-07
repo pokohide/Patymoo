@@ -1,7 +1,8 @@
 - cache(event) do
   section.item
     .content
-      .header = event.name
+      .header
+        = link_to event.name, admin_event_path(event)
       .meta
         span = distance_of_time_in_words_to_now(event.created_at)
       .description

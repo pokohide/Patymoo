@@ -3,7 +3,7 @@
 
 .ui.text.container
   .ui.main.text.container
-    h1.ui.header = @member.name
+    h1.ui.header = @event.name
   
   .ui.very.padded.container.segment
     table.ui.very.basic.padded.orange.table
@@ -12,7 +12,7 @@
           td.collapsing
             i.calendar.outline.icon
             | イベント名
-          td = @member.name
+          td = @event.name
         tr
           td.collapsing
             i.browser.icon
@@ -23,7 +23,7 @@
           td.collapsing
             i.linkify.icon
             | イベントリンク
-          td = @event.link
+          td = link_to @event.link, @event.link, target: '_blank'
         tr
           td.collapsing
             i.hourglass.start.icon
