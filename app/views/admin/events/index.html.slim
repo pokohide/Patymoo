@@ -30,7 +30,8 @@
     i.calendar.icon
     | イベント一覧
 
-  .ui.items
+  .ui.grid
+
     - cache(['events', @events.map(&:id), @events.maximum(:updated_at)]) do
       = render @events
 
