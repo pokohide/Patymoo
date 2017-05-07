@@ -27,6 +27,9 @@ gem 'seed-fu', '~> 2.3'
 gem 'faker'
 gem 'counter_culture', '~> 1.0'
 
+# Visual
+gem 'chartkick'
+
 # Frontend
 gem 'gon'
 gem 'kaminari'

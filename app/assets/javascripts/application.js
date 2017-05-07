@@ -12,6 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require chartkick
 //= require semantic-ui
 
 import 'libs/base'
