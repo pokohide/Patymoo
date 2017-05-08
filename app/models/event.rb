@@ -26,5 +26,11 @@ class Event < ApplicationRecord
   has_many :event_members, dependent: :destroy
   has_many :members, through: :event_members
 
+  # Scope
+  scope :like, ->(q) {
+    where('name like ?', "%#{q}%") if q.present?
+  }
+  scope :asc, -> { order(open_date: :asc) }
+
   accepts_nested_attributes_for :event_members, allow_destroy: true
 end

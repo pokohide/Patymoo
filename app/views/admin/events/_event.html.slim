@@ -4,6 +4,7 @@
       .ui.top.right.attached.label = event.start_at.to_s(:published_on)
       .ui.header
         = link_to event.name, admin_event_path(event)
+        span = "(#{event.members_count}人)"
       .content
         / span = distance_of_time_in_words_to_now(event.created_at)
         .description

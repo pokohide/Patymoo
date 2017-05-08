@@ -1,0 +1,23 @@
+- content_for :header do
+  = render 'shared/breadcrumb', breadcrumb: { "#{@event.name}": admin_event_path(@event), \
+    '出席管理': new_admin_event_attend_path(@event) }
+
+.ui.text.container
+  .ui.main.text.container
+    h1.ui.header = "#{@event.name} - 出席管理"
+  
+    = form_for @event, url: admin_event_attends_path(@event), html: { method: :post, class: 'ui form' } do |f|
+      = render 'shared/error_messages', object: f.object
+
+      .field.required
+        label.label = f.label :name, 'イベント名'
+        = f.text_field :name, placeholder: '例) WEB初心者勉強会'
+
+      .field
+        = f.label :members, '参加者'
+        = f.fields_for :members do |builder|
+          = render 'shared/error_messages', object: builder.object
+          = render 'member_fields', f: builder
+        = link_to_add_fields '追加', f, :members 
+
+      = f.submit '作成する', class: 'ui teal fluid button'
