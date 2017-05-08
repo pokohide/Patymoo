@@ -19,9 +19,7 @@
 
     .field
       label.label = f.label :link, '詳細リンク'
-      .ui.labeled.input
-        .ui.label http://        
-        = f.text_field :link, placeholder: '例) www.othlo.tech'
+      = f.text_field :link, placeholder: '例) www.othlo.tech'
     
     .field
       label.label = f.label :start_at, 'イベント日時'
