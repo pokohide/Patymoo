@@ -12,6 +12,8 @@ $('.Admin').ready(() => {
     const time = new Date().getTime()
     const regexp = new RegExp($(this).data('id'), 'g')
     $(this).before($(this).data('fields').replace(regexp, time))
+    $('.ui.dropdown').dropdown({ on: 'hover' })
+    $('.ui.accordion').accordion()
     e.preventDefault()
   })
 })

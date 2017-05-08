@@ -1,26 +1,12 @@
 section.ui.segment
+  .ui.top.right.attached.label
+    = f.hidden_field :_destroy
+    = link_to '#', class: 'remove_fields' do
+      i.remove.icon
+
   .field.required
     label.label = f.label :name, '名前'
     = f.text_field :name, placeholder: '例) オスロ徹子'
-
-  .field
-    label.label = f.label :email, 'メールアドレス'   
-    = f.text_field :email, placeholder: '例) othlotech@gmail.com'
-    
-  .fields
-    .eight.wide.field
-      label.label = f.label :twitter, 'Twitter'
-      .ui.labeled.input
-        .ui.label @
-        = f.text_field :twitter, placeholder: 'OthloTech'
-    
-    .eight.wide.field
-      label.label = f.label :facebook, 'facebook'
-      = f.text_field :facebook, placeholder: 'OthloTech'
-    
-  .field
-    label.label = f.label :connpass, 'connpass'
-    = f.text_field :connpass, placeholder: 'OthloTech'
     
   .field
     label.label = f.label :school_type, '学校のタイプ'
@@ -57,9 +43,29 @@ section.ui.segment
       i.icon.dropdown
       | オプショナル項目
     .content
-      .field
-      label.label = f.label :phone_number, '電話番号'
-      = f.text_field :phone_number, placeholder: '(xxx) - xxx - xxxx'
+      .equal.width.fields
+        .field
+          label.label = f.label :email, 'メールアドレス'   
+          = f.text_field :email, placeholder: '例) othlotech@gmail.com'
+    
+        .field
+          label.label = f.label :phone_number, '電話番号'
+          = f.text_field :phone_number, placeholder: '(xxx) - xxx - xxxx'
+      
+      .equal.width.fields
+        .field
+          label.label = f.label :twitter, 'Twitter'
+          .ui.labeled.input
+            .ui.label @
+            = f.text_field :twitter, placeholder: 'OthloTech'
+        
+        .field
+          label.label = f.label :facebook, 'facebook'
+          = f.text_field :facebook, placeholder: 'OthloTech'
+        
+        .field
+          label.label = f.label :connpass, 'connpass'
+          = f.text_field :connpass, placeholder: 'OthloTech'
     
       .field
         label.label = f.label :note, '一言メモ'

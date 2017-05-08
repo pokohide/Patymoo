@@ -8,7 +8,7 @@ class Admin::AttendsController < ApplicationController
   end
 
   def create
-
+    binding.pry
   end
 
   def edit
