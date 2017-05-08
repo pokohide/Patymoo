@@ -35,4 +35,5 @@
     - cache(['events', @events.map(&:id), @events.maximum(:updated_at)]) do
       = render @events
 
+.ui.container.top-margin.margin-30
   = paginate @events
