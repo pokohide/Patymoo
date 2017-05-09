@@ -4,11 +4,17 @@ class Admin::AttendsController < ApplicationController
   before_action :set_event, only: [:new, :create, :edit, :update, :destroy]
 
   def new
-    @members = @event.members.build
+    @event.members.build
   end
 
   def create
-    binding.pry
+
+    if @event.update(members_params)
+      redirect_to admin_event_path(@event), notice: '出席登録しました。'
+    else
+      render :new, notice: '出席登録に失敗しました。'
+    end
+    # binding.pry
   end
 
   def edit
@@ -32,10 +38,15 @@ class Admin::AttendsController < ApplicationController
   end
 
   def members_params
+    #params.require(:event).permit(
+    #  event_members_attributes: EventMember::NESTED_ALLOWED_PARAMS
+    #)
+    #
+    #
     params.require(:event).permit(
       members_attributes: [:id, :name, :email, :twitter, :facebook,
         :connpass, :grade, :school_type, :school_name, :department,
-        :phone_number, :note]
+        :phone_number, :note, :_destroy]
     )
   end
 end

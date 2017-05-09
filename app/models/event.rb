@@ -32,5 +32,6 @@ class Event < ApplicationRecord
   }
   scope :asc, -> { order(open_date: :asc) }
 
-  accepts_nested_attributes_for :event_members, allow_destroy: true, reject_if: :all_blank
+  #accepts_nested_attributes_for :event_members, allow_destroy: true
+  accepts_nested_attributes_for :members
 end

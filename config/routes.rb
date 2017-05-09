@@ -9,15 +9,25 @@ Rails.application.routes.draw do
   resources :sessions, only: [:new, :create, :destroy]
   resources :password_resets, only: [:create, :edit, :update]
 
-  get 'signup' => 'admins#new', as: 'signup'
-  get 'login' => 'sessions#new', as: 'login'
-  delete 'logout' => 'sessions#destroy', as: 'logout'
+  get 'signup', to: 'admins#new', as: 'signup'
+  get 'login', to: 'sessions#new', as: 'login'
+  delete 'logout', to: 'sessions#destroy', as: 'logout'
 
   namespace :admin do
-    get '/' => 'admins#index', as: 'dashboard'
+    get '/', to: 'admins#index', as: 'dashboard'
     resources :events do
       resources :attends, only: [:new, :create, :edit, :update, :destroy]
     end
     resources :members
+  end
+
+  namespace :api do
+    namespace :v1 do
+      resources :members, only: [] do
+        collection do
+          get '/search', to: 'members#search', as: 'search'
+        end
+      end
+    end
   end
 end

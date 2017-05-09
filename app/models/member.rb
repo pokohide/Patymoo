@@ -25,6 +25,9 @@
 #
 
 class Member < ApplicationRecord
+  ALLOWED_PARAMS = [:id, :_destroy, :name, :email, :twitter, :facebook,
+    :connpass, :grade, :school_type, :school_name, :department, :phone_number, :note]
+
   enum grade: { at_first: 1, at_second: 2, at_third: 3,
     at_fourth: 4, at_fifth: 5, at_sixth: 6, adult: 7 }
   enum school_type: { nursery: 1, kindergarten: 2, elementary: 3,
@@ -39,7 +42,13 @@ class Member < ApplicationRecord
   has_many :event_members, dependent: :destroy
   has_many :events, through: :event_members
 
-  accepts_nested_attributes_for :event_members, allow_destroy: true
+  # Scope
+  scope :like, ->(q) {
+    where('name like ?', "%#{q}%") if q.present?
+  }
+  scope :asc, -> { order(open_date: :asc) }
+
+  # accepts_nested_attributes_for :event_members, allow_destroy: true, reject_if: :all_blank
 
   def grades_when type
     case type
