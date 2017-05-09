@@ -9,10 +9,6 @@
     = form_for @event, url: admin_event_attends_path(@event), html: { method: :post, class: 'ui form' } do |f|
       = render 'shared/error_messages', object: f.object
 
-      .field.required
-        label.label = f.label :name, 'イベント名'
-        = f.text_field :name, placeholder: '例) WEB初心者勉強会'
-
       .field
         = f.label :members, '参加者'
         = f.fields_for :members do |builder|

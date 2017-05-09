@@ -48,8 +48,6 @@ class Member < ApplicationRecord
   }
   scope :asc, -> { order(open_date: :asc) }
 
-  # accepts_nested_attributes_for :event_members, allow_destroy: true, reject_if: :all_blank
-
   def grades_when type
     case type
     when 'nurcery'
