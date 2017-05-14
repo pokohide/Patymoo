@@ -5,7 +5,6 @@ class Admin::AttendsController < ApplicationController
 
   def new
     @members = @event.members
-    @members.build
     @event.members.build
   end
 

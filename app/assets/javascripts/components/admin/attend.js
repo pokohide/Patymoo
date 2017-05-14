@@ -109,6 +109,7 @@ $('.Admin').ready(() => {
       .then((response) => {
         // ここでresponseにmemberIdが含まれていれば、memberIdを更新する。
         $fields.find('.ui.dimmer').dimmer('hide')
+        console.log(response)
       })
       .catch((error) => {
         $fields.find('.ui.dimmer').dimmer('hide')

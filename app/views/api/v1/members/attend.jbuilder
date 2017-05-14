@@ -1,5 +1,4 @@
-json.message 'メッセージ'
-
+json.member_id @member.try(:id)
 
 json.messages do
   json.array! @messages do |message|
