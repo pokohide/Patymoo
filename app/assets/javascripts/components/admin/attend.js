@@ -19,12 +19,14 @@ $('.Admin').ready(() => {
               title: member.name,
               price: member.email,
               description: `${member.school_name} ${member.grade_i18n}`,
-              //id: member.id,
+              memberId: member.id,
               twitter: member.twitter,
               facebook: member.facebook,
               connpass: member.connpass,
               grade: member.grade,
+              grade_i18n: member.grade_i18n,
               school_type: member.school_type,
+              school_type_i18n: member.school_type_i18n,
               school_name: member.school_name,
               department: member.department,
               phone_number: member.phone_number,
@@ -34,15 +36,38 @@ $('.Admin').ready(() => {
           return response
         }
       },
-      onSelect: (result, response) => {
-        console.log(result)
+      onSelect: function(result, response) {
+        const $elem = $(this).parent().parent().parent().parent()
+        $elem.find('.member-id').val(result.memberId)
+        $elem.find('.member-school-type').val(result.school_type)
+        $elem.find('.member-school-type-selection .text').text(result.school_type_i18n)
+        $elem.find('.member-school-name').val(result.school_name)
+        $elem.find('.member-department').val(result.department)
+        $elem.find('.member-grade').val(result.grade)
+        $elem.find('.member-grade-selection .text').text(result.grade_i18n)
+        $elem.find('.member-email').val(result.price)
+        $elem.find('.member-phone-number').val(result.phone_number)
+        $elem.find('.member-twitter').val(result.twitter)
+        $elem.find('.member-facebook').val(result.facebook)
+        $elem.find('.member-connpass').val(result.connpass)
+        $elem.find('.member-note').val(result.note)
       }
     })
   }
 
   /* メンバーを出席させる */
   const attendMember = (eventId, member) => {
-
+    const csrf_token = $('meta[name="csrf-token"]').attr('content')
+    axios.post('/api/v1/members/attend', {
+      event_id: eventId,
+      member: member
+    })
+    .then((response) => {
+      console.log(response)
+    })
+    .catch((error) => {
+      console.log(error)
+    })
   }
 
   /* メンバーを出席停止させる */
@@ -65,12 +90,30 @@ $('.Admin').ready(() => {
 
   disattendMember(1, 2)
 
+  /* メンバー要素を取得する */
+  const getMember = ($elem) => {
+    return {
+      id: $elem.find('.member-id').val(),
+      name: $elem.find('.member-name').val(),
+      school_type: $elem.find('.member-school-type').val(),
+      school_name: $elem.find('.member-school-name').val(),
+      department: $elem.find('.member-department').val(),
+      grade: $elem.find('.member-grade').val(),
+      email: $elem.find('.member-email').val(),
+      twitter: $elem.find('.member-twitter').val(),
+      facebook: $elem.find('.member-facebook').val(),
+      connpass: $elem.find('.member-connpass').val(),
+      note: $elem.find('.member-note').val()
+    }
+  }
+
   /* 出席のチェックボックスを監視 */
   $('.members-field').on('change', '#attend-check', function() {
     if ($(this).prop('checked')) {
       console.log('出席')
       const $fields = $(this).parent().parent().parent('#member-fields')
-      console.log($fields)
+      const member = getMember($fields)
+      console.log(member)
     } else {
       console.log('出席停止')
     }

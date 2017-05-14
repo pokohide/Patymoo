@@ -5,7 +5,7 @@
       label 出席
   section.ui.segment.item.fourteen.wide.column
     .ui.top.right.attached.label
-      = f.hidden_field :id
+      = f.hidden_field :id, class: 'member-id'
       = f.hidden_field :_destroy
       = link_to '#', class: 'remove_fields' do
         i.remove.icon
@@ -14,15 +14,15 @@
       label.label = f.label :name, '名前'
       .ui.fluid.category.search.member-search
         .ui.icon.input
-          = f.text_field :name, placeholder: '例) オスロ徹子', class: 'prompt'
+          = f.text_field :name, placeholder: '例) オスロ徹子', class: 'prompt member-name'
           i.search.icon
         .results
 
     .fields
       .three.wide.field
         label.label = f.label :school_type, '学校のタイプ'
-        .ui.fluid.selection.dropdown
-          = f.hidden_field :school_type
+        .ui.fluid.selection.dropdown.member-school-type-selection
+          = f.hidden_field :school_type, class: 'member-school-type'
           i.dropdown.icon
           .text
           .menu
@@ -31,15 +31,15 @@
                 = key
       .five.wide.field
         label.label = f.label :school_name, '学校名'
-        = f.text_field :school_name, placeholder: '例) Othlo大学'
+        = f.text_field :school_name, placeholder: '例) Othlo大学', class: 'member-school-name'
       .five.wide.field
         label.label = f.label :department, '学部名'
-        = f.text_field :department, placeholder: '例) Othlo学部'
+        = f.text_field :department, placeholder: '例) Othlo学部', class: 'member-department'
 
       .three.wide.field
         label.label = f.label :grade, '学年'
-        .ui.fluid.selection.dropdown
-          = f.hidden_field :grade
+        .ui.fluid.selection.dropdown.member-grade-selection
+          = f.hidden_field :grade, class: 'member-grade'
           i.dropdown.icon
           .text
           .menu
@@ -55,27 +55,27 @@
         .equal.width.fields
           .field
             label.label = f.label :email, 'メールアドレス'   
-            = f.text_field :email, placeholder: '例) othlotech@gmail.com'
+            = f.text_field :email, placeholder: '例) othlotech@gmail.com', class: 'member-email'
       
           .field
             label.label = f.label :phone_number, '電話番号'
-            = f.text_field :phone_number, placeholder: '(xxx) - xxx - xxxx'
+            = f.text_field :phone_number, placeholder: '(xxx) - xxx - xxxx', class: 'member-phone-number'
         
         .equal.width.fields
           .field
             label.label = f.label :twitter, 'Twitter'
             .ui.labeled.input
               .ui.label @
-              = f.text_field :twitter, placeholder: 'OthloTech'
+              = f.text_field :twitter, placeholder: 'OthloTech', class: 'member-twitter'
           
           .field
             label.label = f.label :facebook, 'facebook'
-            = f.text_field :facebook, placeholder: 'OthloTech'
+            = f.text_field :facebook, placeholder: 'OthloTech', class: 'member-facebook'
           
           .field
             label.label = f.label :connpass, 'connpass'
-            = f.text_field :connpass, placeholder: 'OthloTech'
+            = f.text_field :connpass, placeholder: 'OthloTech', class: 'member-connpass'
       
         .field
           label.label = f.label :note, '一言メモ'
-          = f.text_field :note, placeholder: '例) OthloTechが好き'
+          = f.text_field :note, placeholder: '例) OthloTechが好き', class: 'member-note'
