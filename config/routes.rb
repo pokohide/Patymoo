@@ -26,6 +26,8 @@ Rails.application.routes.draw do
       resources :members, only: [] do
         collection do
           get '/search', to: 'members#search', as: 'search'
+          post 'attend', to: 'members#attend', as: 'attend'
+          delete 'attend', to: 'members#disattend', as: 'disattend'
         end
       end
     end

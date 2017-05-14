@@ -4,6 +4,8 @@ class Admin::AttendsController < ApplicationController
   before_action :set_event, only: [:new, :create, :edit, :update, :destroy]
 
   def new
+    @members = @event.members
+    @members.build
     @event.members.build
   end
 

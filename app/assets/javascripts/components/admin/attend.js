@@ -1,3 +1,5 @@
+import axios from 'axios'
+
 $('.Admin').ready(() => {
 
   /* メンバーを名前から検索 */
@@ -37,6 +39,42 @@ $('.Admin').ready(() => {
       }
     })
   }
+
+  /* メンバーを出席させる */
+  const attendMember = (eventId, member) => {
+
+  }
+
+  /* メンバーを出席停止させる */
+  const disattendMember = (eventId, memberId) => {
+    const csrf_token = $('meta[name="csrf-token"]').attr('content')
+    axios.delete('/api/v1/members/attend', {
+      params: {
+        event_id: eventId,
+        member_id: memberId
+      },
+      headers: { 'X-CSRF-Token': csrf_token }
+    })
+    .then((response) => {
+      console.log(response)
+    })
+    .catch((error) => {
+      console.log(error)
+    })
+  }
+
+  disattendMember(1, 2)
+
+  /* 出席のチェックボックスを監視 */
+  $('.members-field').on('change', '#attend-check', function() {
+    if ($(this).prop('checked')) {
+      console.log('出席')
+      const $fields = $(this).parent().parent().parent('#member-fields')
+      console.log($fields)
+    } else {
+      console.log('出席停止')
+    }
+  })
 
   /* フィールドを追加する */
   $('.ui.form').on('click', '.remove_fields', function(e) {
