@@ -9,9 +9,19 @@ class Api::V1::MembersController < ApplicationController
 
   def attend
     @event = @admin.events.find(params[:event_id])
-    @member = @admin.members.find_or_create_by()
-    # if params[:member_id]
-    binding.pry
+    if @member = @admin.members.find_by(id: params[:member][:id])
+      @event.members << @member
+      add_message "[#{@event.name}]に「#{@member.name}」を出席させました。"
+    else
+      @member = @admin.members.new(member_params)
+      if @member.save
+        add_message "「#{@member.name}」を追加しました。"
+        @event.members << @member
+        add_message "[#{@event.name}]に「#{@member.name}」を出席させました。"
+      else
+        add_message "メンバーの追加に失敗しました。", 'error'
+      end
+    end
   end
 
   def disattend
@@ -28,6 +38,12 @@ class Api::V1::MembersController < ApplicationController
   end
 
   private
+
+  def add_message body, type='notice'
+    @messages ||= []
+    @messages.push({ body: body, type: type })
+  end
+
   def set_admin
     @admin = current_user
     return head(:not_found) if @admin.nil?

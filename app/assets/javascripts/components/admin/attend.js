@@ -59,41 +59,25 @@ $('.Admin').ready(() => {
   const attendMember = (eventId, member) => {
     const authenticity_token = $('input[name="authenticity_token"]').val()
     const csrf_token = $('meta[name="csrf-token"]').attr('content')
-    axios.post('/api/v1/members/attend', {
+    return axios.post('/api/v1/members/attend', {
       event_id: eventId,
       member: member
     }, {
-      headers: {
-        'X-CSRF-Token': csrf_token
-      }
-    })
-    .then((response) => {
-      console.log(response)
-    })
-    .catch((error) => {
-      console.log(error)
+      headers: { 'X-CSRF-Token': csrf_token }
     })
   }
 
   /* メンバーを出席停止させる */
   const disattendMember = (eventId, memberId) => {
     const csrf_token = $('meta[name="csrf-token"]').attr('content')
-    axios.delete('/api/v1/members/attend', {
+    return axios.delete('/api/v1/members/attend', {
       params: {
         event_id: eventId,
         member_id: memberId
       },
       headers: { 'X-CSRF-Token': csrf_token }
     })
-    .then((response) => {
-      console.log(response)
-    })
-    .catch((error) => {
-      console.log(error)
-    })
   }
-
-  disattendMember(1, 2)
 
   /* メンバー要素を取得する */
   const getMember = ($elem) => {
@@ -114,14 +98,32 @@ $('.Admin').ready(() => {
 
   /* 出席のチェックボックスを監視 */
   $('.members-field').on('change', '#attend-check', function() {
+    const $fields = $(this).parent().parent().parent('#member-fields')
+    const eventId = $('#event_id').val()
     if ($(this).prop('checked')) {
       console.log('出席')
       const $fields = $(this).parent().parent().parent('#member-fields')
       const member = getMember($fields)
-      const eventId = $('#event_id').val()
+      $fields.find('.ui.dimmer').dimmer('show')
       attendMember(eventId, member)
+      .then((response) => {
+        // ここでresponseにmemberIdが含まれていれば、memberIdを更新する。
+        $fields.find('.ui.dimmer').dimmer('hide')
+      })
+      .catch((error) => {
+        $fields.find('.ui.dimmer').dimmer('hide')
+      })
     } else {
-      console.log('出席停止')
+      const memberId = $fields.find('.member-id').val()
+      $fields.find('.ui.dimmer').dimmer('show')
+      disattendMember(eventId, memberId)
+      .then((response) => {
+        $fields.find('.ui.dimmer').dimmer('hide')
+      })
+      .catch((error) => {
+        $fields.find('.ui.dimmer').dimmer('hide')
+        console.log(error)
+      })
     }
   })
 

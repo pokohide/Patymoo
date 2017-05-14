@@ -26,8 +26,8 @@ class EventMember < ApplicationRecord
 
   # accepts_nested_attributes_for :member, reject_if: :all_blank
 
-  counter_culture :event, column_name: 'events_count'
-  counter_culture :member, column_name: 'members_count'
+  #counter_culture :event, column_name: 'events_count'
+  #counter_culture :member, column_name: 'members_count'
 
   validates :member_id, presence: true, uniqueness: { scope: [:event_id] }
 end

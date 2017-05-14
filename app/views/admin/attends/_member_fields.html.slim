@@ -4,6 +4,8 @@
       input#attend-check(type='checkbox')
       label 出席
   section.ui.segment.item.fourteen.wide.column
+    .ui.dimmer
+      .ui.text.loader Loading
     .ui.top.right.attached.label
       = f.hidden_field :id, class: 'member-id'
       = f.hidden_field :_destroy
