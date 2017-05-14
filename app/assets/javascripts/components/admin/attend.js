@@ -37,7 +37,7 @@ $('.Admin').ready(() => {
         }
       },
       onSelect: function(result, response) {
-        const $elem = $(this).parent().parent().parent().parent()
+        const $elem = $(this).parent().parent().parent()
         $elem.find('.member-id').val(result.memberId)
         $elem.find('.member-school-type').val(result.school_type)
         $elem.find('.member-school-type-selection .text').text(result.school_type_i18n)
@@ -57,10 +57,15 @@ $('.Admin').ready(() => {
 
   /* メンバーを出席させる */
   const attendMember = (eventId, member) => {
+    const authenticity_token = $('input[name="authenticity_token"]').val()
     const csrf_token = $('meta[name="csrf-token"]').attr('content')
     axios.post('/api/v1/members/attend', {
       event_id: eventId,
       member: member
+    }, {
+      headers: {
+        'X-CSRF-Token': csrf_token
+      }
     })
     .then((response) => {
       console.log(response)
@@ -113,7 +118,8 @@ $('.Admin').ready(() => {
       console.log('出席')
       const $fields = $(this).parent().parent().parent('#member-fields')
       const member = getMember($fields)
-      console.log(member)
+      const eventId = $('#event_id').val()
+      attendMember(eventId, member)
     } else {
       console.log('出席停止')
     }
