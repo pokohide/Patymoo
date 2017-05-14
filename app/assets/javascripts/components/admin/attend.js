@@ -108,11 +108,14 @@ $('.Admin').ready(() => {
       attendMember(eventId, member)
       .then((response) => {
         // ここでresponseにmemberIdが含まれていれば、memberIdを更新する。
+        const { data: { member_id, messages } } = response
         $fields.find('.ui.dimmer').dimmer('hide')
-        console.log(response)
+        $fields.find('.member-id').val(member_id)
+        console.log(messages)
       })
       .catch((error) => {
         $fields.find('.ui.dimmer').dimmer('hide')
+        console.log(error)
       })
     } else {
       const memberId = $fields.find('.member-id').val()
@@ -120,6 +123,7 @@ $('.Admin').ready(() => {
       disattendMember(eventId, memberId)
       .then((response) => {
         $fields.find('.ui.dimmer').dimmer('hide')
+        console.log(response)
       })
       .catch((error) => {
         $fields.find('.ui.dimmer').dimmer('hide')

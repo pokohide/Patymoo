@@ -1,6 +1,3 @@
-@import 'admins/base';
-@import 'events/base';
-
 .Admin {
   .pusher {
     padding-top: 80px;
@@ -13,4 +10,8 @@
   th.sorted.descending:after {
   	content: " \2193";
   }
+
+  @import 'admins/base';
+  @import 'events/base';
+  @import 'attends/base';
 }

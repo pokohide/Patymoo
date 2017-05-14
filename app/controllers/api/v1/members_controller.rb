@@ -28,13 +28,12 @@ class Api::V1::MembersController < ApplicationController
     @event = @admin.events.find(params[:event_id])
     @member = @admin.members.find(params[:member_id])
 
-    # event_member = EventMember.find_by(event_id: @event.id, member_id: @member.id)
-    @message = "#{params[:event_id]}と#{params[:member_id]}だよー"
-    # @message = if event_member.destroy
-    #             "[#{@event.name}]から「#{@member.name}」の出席を取り消しました。"
-    #            else
-    #              "出席の取り消しに失敗しました。"
-    #            end
+    event_member = EventMember.find_by(event_id: @event.id, member_id: @member.id)
+    if event_member.destroy
+      add_message "[#{@event.name}]から「#{@member.name}」の出席を取り消しました。"
+    else
+      add_message "出席の取り消しに失敗しました。", "error"
+    end
   end
 
   private
