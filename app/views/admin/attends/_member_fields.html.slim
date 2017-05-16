@@ -1,11 +1,18 @@
 .ui.grid#member-fields
   .two.wide.column(style='display:flex;justify-content: center;align-items: center;')
-    .ui.checkbox
+    .ui.checkbox class="#{f.object.id.present? ? 'checked' : ''}"
       input#attend-check(type='checkbox')
       label 出席
-  section.ui.segment.item.fourteen.wide.column
-    .ui.dimmer
+  section.ui.segment.item.fourteen.wide.column class="attend-#{f.object.id.present?}"
+    .ui.dimmer#loading
       .ui.text.loader Loading
+    
+    .ui.inverted.dimmer#attending
+      .content
+        .center
+          h2.ui.icon.header
+            | 出席中
+
     .ui.top.right.attached.label
       = f.hidden_field :id, class: 'member-id'
       = f.hidden_field :_destroy

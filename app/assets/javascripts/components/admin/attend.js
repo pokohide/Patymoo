@@ -104,33 +104,37 @@ $('.Admin').ready(() => {
       console.log('出席')
       const $fields = $(this).parent().parent().parent('#member-fields')
       const member = getMember($fields)
-      $fields.find('.ui.dimmer').dimmer('show')
+      $fields.find('.ui.dimmer#loading').dimmer('show')
       attendMember(eventId, member)
       .then((response) => {
         // ここでresponseにmemberIdが含まれていれば、memberIdを更新する。
         const { data: { member_id, messages } } = response
-        $fields.find('.ui.dimmer').dimmer('hide')
+        $fields.find('.ui.dimmer#loading').dimmer('hide')
+        $fields.find('.ui.dimmer#attending').dimmer('show')
         $fields.find('.member-id').val(member_id)
         console.log(messages)
       })
       .catch((error) => {
-        $fields.find('.ui.dimmer').dimmer('hide')
+        $fields.find('.ui.dimmer#loading').dimmer('hide')
         console.log(error)
       })
     } else {
       const memberId = $fields.find('.member-id').val()
-      $fields.find('.ui.dimmer').dimmer('show')
+      $fields.find('.ui.dimmer#loading').dimmer('show')
       disattendMember(eventId, memberId)
       .then((response) => {
-        $fields.find('.ui.dimmer').dimmer('hide')
+        $fields.find('.ui.dimmer#loading').dimmer('hide')
+        $fields.find('.ui.dimmer#attending').dimmer('show')
         console.log(response)
       })
       .catch((error) => {
-        $fields.find('.ui.dimmer').dimmer('hide')
+        $fields.find('.ui.dimmer#loading').dimmer('hide')
         console.log(error)
       })
     }
   })
+
+  $('.attend-true .ui.dimmer#attending').dimmer('show')
 
   /* フィールドを追加する */
   $('.ui.form').on('click', '.remove_fields', function(e) {
