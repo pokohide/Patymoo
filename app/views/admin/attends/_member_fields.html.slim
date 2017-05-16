@@ -1,9 +1,9 @@
-.ui.grid#member-fields
+.ui.grid#member-fields class="attend-#{f.object.id.present?}"
   .two.wide.column(style='display:flex;justify-content: center;align-items: center;')
-    .ui.checkbox class="#{f.object.id.present? ? 'checked' : ''}"
+    .ui.checkbox.attend-checkbox class="#{f.object.id.present? ? 'checked' : ''}"
       input#attend-check(type='checkbox')
       label 出席
-  section.ui.segment.item.fourteen.wide.column class="attend-#{f.object.id.present?}"
+  section.ui.segment.item.fourteen.wide.column
     .ui.dimmer#loading
       .ui.text.loader Loading
     

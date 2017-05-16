@@ -20,7 +20,7 @@ import 'components/base'
 
 $(document).ready(() => {
   $('.ui.dropdown').dropdown({ on: 'hover' })
-  $('.ui.checkbox').checkbox()
+  //$('.ui.checkbox').checkbox()
   $('.ui.accordion').accordion()
 
   /* notificationの閉じるをクリックしたら閉じる */

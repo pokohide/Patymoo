@@ -14,7 +14,6 @@ $('.Admin').ready(() => {
           const maxResults = 8
           $.each(res.members, (index, member) => {
             if (index > maxResults) return false
-            console.log(member)
             response.results.push({
               title: member.name,
               price: member.email,
@@ -57,7 +56,8 @@ $('.Admin').ready(() => {
 
   /* メンバーを出席させる */
   const attendMember = (eventId, member) => {
-    const authenticity_token = $('input[name="authenticity_token"]').val()
+    console.log('出席中...')
+
     const csrf_token = $('meta[name="csrf-token"]').attr('content')
     return axios.post('/api/v1/members/attend', {
       event_id: eventId,
@@ -69,6 +69,8 @@ $('.Admin').ready(() => {
 
   /* メンバーを出席停止させる */
   const disattendMember = (eventId, memberId) => {
+    console.log('出席中止中...')
+
     const csrf_token = $('meta[name="csrf-token"]').attr('content')
     return axios.delete('/api/v1/members/attend', {
       params: {
@@ -96,45 +98,25 @@ $('.Admin').ready(() => {
     }
   }
 
-  /* 出席のチェックボックスを監視 */
-  $('.members-field').on('change', '#attend-check', function() {
-    const $fields = $(this).parent().parent().parent('#member-fields')
-    const eventId = $('#event_id').val()
-    if ($(this).prop('checked')) {
-      console.log('出席')
-      const $fields = $(this).parent().parent().parent('#member-fields')
-      const member = getMember($fields)
-      $fields.find('.ui.dimmer#loading').dimmer('show')
-      attendMember(eventId, member)
-      .then((response) => {
-        // ここでresponseにmemberIdが含まれていれば、memberIdを更新する。
-        const { data: { member_id, messages } } = response
-        $fields.find('.ui.dimmer#loading').dimmer('hide')
-        $fields.find('.ui.dimmer#attending').dimmer('show')
-        $fields.find('.member-id').val(member_id)
-        console.log(messages)
-      })
-      .catch((error) => {
-        $fields.find('.ui.dimmer#loading').dimmer('hide')
-        console.log(error)
-      })
-    } else {
-      const memberId = $fields.find('.member-id').val()
-      $fields.find('.ui.dimmer#loading').dimmer('show')
-      disattendMember(eventId, memberId)
-      .then((response) => {
-        $fields.find('.ui.dimmer#loading').dimmer('hide')
-        $fields.find('.ui.dimmer#attending').dimmer('show')
-        console.log(response)
-      })
-      .catch((error) => {
-        $fields.find('.ui.dimmer#loading').dimmer('hide')
-        console.log(error)
-      })
-    }
-  })
+  /* ローディング表示 */
+  const showLoading = $field => {
+    $field.find('.ui.dimmer#loading').dimmer('show')
+  }
 
-  $('.attend-true .ui.dimmer#attending').dimmer('show')
+  /* ローディング非表示 */
+  const hideLoading = $field => {
+    $field.find('.ui.dimmer#loading').dimmer('hide')
+  }
+
+  /* 表示を状態で調整 */
+  const changeState = ($field, state, memberId) => {
+    if (state === 'attend') {
+      $field.find('.ui.dimmer#attending').dimmer('show')
+      $field.find('.member-id').val(memberId)
+    } else if (state === 'disattend') {
+      $field.find('.ui.dimmer#attending').dimmer('hide')
+    }
+  }
 
   /* フィールドを追加する */
   $('.ui.form').on('click', '.remove_fields', function(e) {
@@ -154,5 +136,46 @@ $('.Admin').ready(() => {
     e.preventDefault()
   })
 
+  const setCheckbox = () => {
+    $('.Admin.attends .members-field .attend-checkbox').checkbox({
+      onChecked: function() {
+        const $field = $(this).parent().parent().parent('#member-fields')
+        const eventId = $('#event_id').val()
+        const member = getMember($field)
+        showLoading($field)
+        attendMember(eventId, member)
+        .then((response) => {
+          const { data: { member_id, messages } } = response
+          hideLoading($field)
+          changeState($field, 'attend', member_id)
+          console.log(messages)
+        })
+        .catch((error) => {
+          hideLoading($field)
+          console.log(error)
+        })
+      },
+      onUnchecked: function() {
+        const $field = $(this).parent().parent().parent('#member-fields')
+        const eventId = $('#event_id').val()
+        const memberId = $field.find('.member-id').val()
+        showLoading($field)
+        disattendMember(eventId, memberId)
+        .then((response) => {
+          hideLoading($field)
+          changeState($field, 'disattend')
+          console.log(response)
+        })
+        .catch((error) => {
+          hideLoading($field)
+          console.log(error)
+        })
+      }
+    })
+  }
+
+  $('.attend-true .ui.dimmer#attending').dimmer('show')
+  $('.attend-true .attend-checkbox').checkbox('set checked')
   setSearch()
+  setCheckbox()
 })
