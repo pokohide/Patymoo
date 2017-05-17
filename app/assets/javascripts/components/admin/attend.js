@@ -109,10 +109,12 @@ $('.Admin').ready(() => {
   }
 
   /* 表示を状態で調整 */
-  const changeState = ($field, state, memberId) => {
+  const changeState = ($field, state, member) => {
     if (state === 'attend') {
       $field.find('.ui.dimmer#attending').dimmer('show')
-      $field.find('.member-id').val(memberId)
+      $field.find('.ui.dimmer#attending').dimmer({ closable: false })
+      $field.find('.ui.dimmer#attending .attending-member-name').text(member.name)
+      $field.find('.member-id').val(member.id)
     } else if (state === 'disattend') {
       $field.find('.ui.dimmer#attending').dimmer('toggle')
       $field.find('.ui.dimmer#attending').dimmer('hide')
@@ -141,6 +143,7 @@ $('.Admin').ready(() => {
   const setCheckbox = () => {
     $('.Admin.attends .members-field .attend-checkbox').checkbox({
       onChecked: function() {
+        const _this = $(this)
         const $field = $(this).parent().parent().parent('#member-fields')
         const eventId = $('#event_id').val()
         const member = getMember($field)
@@ -148,11 +151,13 @@ $('.Admin').ready(() => {
         attendMember(eventId, member)
         .then((response) => {
           const { data: { member_id, messages } } = response
+          _this.checkbox('set disabled')
           hideLoading($field)
-          changeState($field, 'attend', member_id)
+          changeState($field, 'attend', { id: member_id, name: member.name })
           console.log(messages)
         })
         .catch((error) => {
+          _this.checkbox('set unchecked')
           hideLoading($field)
           console.log(error)
         })
@@ -169,6 +174,7 @@ $('.Admin').ready(() => {
           console.log(response)
         })
         .catch((error) => {
+          _this.checkbox('set checked')
           hideLoading($field)
           console.log(error)
         })

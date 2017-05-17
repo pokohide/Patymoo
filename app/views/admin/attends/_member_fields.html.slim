@@ -11,7 +11,8 @@
       .content
         .center
           h2.ui.icon.header
-            | 出席中
+            span.attending-member-name = f.object.name
+            .ui.red.basic.left.pointing.label 出席
 
     .ui.top.right.attached.label
       = f.hidden_field :id, class: 'member-id'
