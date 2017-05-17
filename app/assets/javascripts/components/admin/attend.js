@@ -114,6 +114,7 @@ $('.Admin').ready(() => {
       $field.find('.ui.dimmer#attending').dimmer('show')
       $field.find('.member-id').val(memberId)
     } else if (state === 'disattend') {
+      $field.find('.ui.dimmer#attending').dimmer('toggle')
       $field.find('.ui.dimmer#attending').dimmer('hide')
     }
   }
@@ -133,6 +134,7 @@ $('.Admin').ready(() => {
     $('.ui.dropdown').dropdown({ on: 'hover' })
     $('.ui.accordion').accordion()
     setSearch()
+    setCheckbox()
     e.preventDefault()
   })
 
@@ -174,7 +176,7 @@ $('.Admin').ready(() => {
     })
   }
 
-  $('.attend-true .ui.dimmer#attending').dimmer('show')
+  $('.attend-true .ui.dimmer#attending').dimmer('set active')
   $('.attend-true .attend-checkbox').checkbox('set checked')
   setSearch()
   setCheckbox()
