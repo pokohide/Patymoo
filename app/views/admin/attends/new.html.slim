@@ -4,14 +4,15 @@
 
 .ui.text.container
   .ui.main.text.container
-    h1.ui.header = "#{@event.name} - 出席管理"
+    .ui.segment
+      h1.ui.header = "#{@event.name} - 出席管理"
   
     = form_for @event, url: admin_event_attends_path(@event), html: { method: :post, class: 'ui form' } do |f|
       = render 'shared/error_messages', object: f.object
       = f.hidden_field :id
 
       .field.members-field
-        = f.label :members, '参加者'
+        .ui.horizontal.divider 参加者
         = f.fields_for :members do |builder|
           = render 'shared/error_messages', object: builder.object
           = render 'member_fields', f: builder

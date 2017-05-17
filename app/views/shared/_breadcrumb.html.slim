@@ -1,5 +1,8 @@
 .ui.breadcrumb
   = link_to 'トップページ', root_path
-  - breadcrumb.each do |page, url|
+  - breadcrumb.each_with_index do |(page, url), i|
     i.right.angle.icon.divider
-    = link_to page, url, class: 'section'
+    - if i == breadcrumb.size - 1
+      .active.section = page
+    - else
+      = link_to page, url, class: 'section'
