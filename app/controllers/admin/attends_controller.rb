@@ -9,13 +9,11 @@ class Admin::AttendsController < ApplicationController
   end
 
   def create
-
     if @event.update(members_params)
       redirect_to admin_event_path(@event), notice: '出席登録しました。'
     else
       render :new, notice: '出席登録に失敗しました。'
     end
-    # binding.pry
   end
 
   def edit

@@ -12,6 +12,7 @@ class Admin::EventsController < ApplicationController
   end
 
   def show
+    @members = @event.members.page(params[:page]).per(18)
   end
 
   def create
