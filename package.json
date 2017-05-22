@@ -1,4 +1,8 @@
 {
+  "scripts": {
+    "prestart": "next build",
+    "start": "next start -p ${PORT}",
+  },  
   "dependencies": {
     "axios": "^0.16.1",
     "babel-core": "^6.24.1",
