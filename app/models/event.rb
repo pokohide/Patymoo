@@ -23,6 +23,7 @@ class Event < ApplicationRecord
   # References
   belongs_to :admin
   counter_culture :admin
+  counter_culture :member, column_name: 'members_count'
   has_many :event_members, dependent: :destroy
   has_many :members, through: :event_members
 
@@ -31,7 +32,5 @@ class Event < ApplicationRecord
     where('name like ?', "%#{q}%") if q.present?
   }
   scope :asc, -> { order(open_date: :asc) }
-
-  #accepts_nested_attributes_for :event_members, allow_destroy: true
   accepts_nested_attributes_for :members
 end

@@ -11,7 +11,13 @@
   	content: " \2193";
   }
 
+  #pie-chart {
+    margin: 0 auto;
+    width: 100%;
+  }
+
   @import 'admins/base';
   @import 'events/base';
   @import 'attends/base';
+  @import 'members/base';
 }

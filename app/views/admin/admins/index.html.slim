@@ -8,12 +8,12 @@
       h4.ui.horizontal.divider.header
         | 学年割合
       = pie_chart @grade_data, donut: true, legend: 'bottom',
-        id: 'member-grade-chart', label: '人数'
+        id: 'member-grade-chart pie-chart', label: '人数'
     .ui.segment
       h4.ui.horizontal.divider.header
         | 大学割合
       = pie_chart @school_data, donut: true, legend: 'bottom',
-        id: 'member-school-chart', label: '人数'
+        id: 'member-school-chart pie-chart', label: '人数'
 
 
 .ui.container.top-margin.margin-60

@@ -24,8 +24,6 @@ class EventMember < ApplicationRecord
   belongs_to :event
   belongs_to :member
 
-  # accepts_nested_attributes_for :member, reject_if: :all_blank
-
   #counter_culture :event, column_name: 'events_count'
   #counter_culture :member, column_name: 'members_count'
 

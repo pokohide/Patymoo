@@ -17,7 +17,11 @@
       = link_to new_admin_member_path, class: 'item' do
         i.add.user.icon
         | 参加者追加
-  
+      .item
+        .ui.icon.inverted.input
+          input(type='text' placeholder='参加者を検索...')
+          i.search.icon
+
   .item
     .header イベント
     .menu
@@ -29,10 +33,10 @@
         | イベント追加
       .item
         .ui.icon.inverted.input
-          input(type='text' placeholder='参加者を検索...')
+          input(type='text' placeholder='イベントを検索...')
           i.search.icon
 
-  = link_to '#', class: 'item' do
+  = link_to admin_edit_path, class: 'item' do
     i.setting.icon
     | 設定
 
