@@ -1,7 +1,10 @@
 {
   "scripts": {
-    "prestart": "next build",
+    "postinstall": "npm install"
   },
+  "cacheDirectories": [
+    "node_modules"
+  ],
   "dependencies": {
     "axios": "^0.16.1",
     "babel-core": "^6.24.1",
