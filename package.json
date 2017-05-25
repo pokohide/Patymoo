@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "postinstall": "npm install"
+    "heroku-postbuild": "npm install"
   },
   "cacheDirectories": [
     "node_modules"
