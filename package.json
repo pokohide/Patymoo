@@ -2,6 +2,10 @@
   "scripts": {
     "postinstall": "npm install"
   },
+  "engines": {
+    "node": "7.6.0",
+    "npm": "4.3.0"
+  },
   "cacheDirectories": [
     "node_modules"
   ],
