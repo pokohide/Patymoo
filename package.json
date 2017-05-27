@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "postinstall": "yarn install"
+    "postinstall": "npm install --ignore-scripts"
   },
   "engines": {
     "node": "7.6.0",
@@ -17,8 +17,25 @@
     "babel-preset-stage-0": "^6.24.1"
   },
   "devDependencies": {
-    "babel-core": "^6.24.1",
     "babel-loader": "^7.0.0",
     "babel-register": "^6.24.1"
-  }
+  },
+  "name": "Party",
+  "description": "## 初期データ投入",
+  "version": "1.0.0",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hyde2able/Party.git"
+  },
+  "keywords": [],
+  "author": "pokohide",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hyde2able/Party/issues"
+  },
+  "homepage": "https://github.com/hyde2able/Party#readme"
 }
