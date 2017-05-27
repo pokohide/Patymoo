@@ -4,7 +4,7 @@ class Admin::MembersController < ApplicationController
   before_action :set_member, only: [:show, :edit, :update, :destroy]
 
   def index
-    @q = params[:q]
+    @q = params[:member_q]
     @members = @admin.members.like(@q).page(params[:page]).per(18)
 
     @grade_data = @admin.members.group('grade').count

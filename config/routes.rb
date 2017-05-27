@@ -17,6 +17,7 @@ Rails.application.routes.draw do
     get '/', to: 'admins#index', as: 'dashboard'
     put '/', to: 'admins#update', as: 'update'
     get '/edit', to: 'admins#edit', as: 'edit'
+    get '/search', to: 'admins#search', as: 'search'
 
     resources :events do
       resources :attends, only: [:new, :create, :edit, :update, :destroy]

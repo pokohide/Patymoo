@@ -4,7 +4,7 @@ class Admin::EventsController < ApplicationController
   before_action :set_event, only: [:show, :edit, :update, :destroy]
 
   def index
-    @q = params[:q]
+    @q = params[:event_q]
     @events = @admin.events.like(@q).page(params[:page]).per(18)
   end
 

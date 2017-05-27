@@ -1,0 +1,49 @@
+- content_for :header do
+  = render 'templates/admin/breadcrumb', breadcrumb: { "「#{@q}」で検索": admin_search_path }
+
+
+.ui.container.top-margin.margin-60
+
+  h4.ui.horizontal.divider.header
+    i.icon.users
+    | メンバ一覧
+
+  table.ui.sortable.striped.red.table
+    thead.full-width
+      tr
+        th 名前
+        th Eメール
+        th Twitter
+        th facebook
+        th Connpass
+    tbody
+      = render @members
+    tfoot.full-width
+      tr
+        th.center.aligned(colspan='5')
+          - if @members.size.zero?
+            | メンバーが存在しません。
+            = link_to new_admin_member_path, class: 'ui basic button' do
+              i.icon.user
+              | 追加する
+          - else
+            = paginate @members
+
+
+.ui.container.top-margin.margin-60
+  h4.ui.horizontal.divider.header
+    i.calendar.icon
+    | イベント一覧
+
+  .ui.grid.center.aligned
+    - if @events.size.zero?
+      .top-margin.margin-60
+        = link_to new_admin_event_path, class: 'ui basic button' do
+          i.icon.calendar
+          | イベントを作成
+
+    - cache(['events', @events.map(&:id), @events.maximum(:updated_at)]) do
+      = render @events
+
+.ui.container.top-margin.margin-30
+  = paginate @events

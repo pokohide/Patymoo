@@ -8,6 +8,13 @@ class Admin::AdminsController < ApplicationController
     @school_count = @admin.members.pluck(:school_name).uniq.count
   end
 
+  def search
+    @q = params[:q]
+
+    @members = @admin.members.like(@q).page(params[:page]).per(5)
+    @events = @admin.events.like(@q).page(params[:page]).per(5)
+  end
+
   def edit
   end
 

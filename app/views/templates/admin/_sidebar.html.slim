@@ -19,7 +19,7 @@
         | 参加者追加
       .item
         = form_tag admin_members_path, method: :get, enforce_utf8: false, class: 'ui action inverted input' do
-          = text_field_tag :q, '', placeholder: '参加者を検索...'
+          = text_field_tag :q, params[:member_q], placeholder: '参加者を検索...'
           = button_tag type: 'submit', class: 'ui right icon button' do
             i.search.icon
 
@@ -34,7 +34,7 @@
         | イベント追加
       .item
         = form_tag admin_events_path, method: :get, enforce_utf8: false, class: 'ui action inverted input' do
-          = text_field_tag :q, '', placeholder: 'イベントを検索...'
+          = text_field_tag :q,  params[:event_q], placeholder: 'イベントを検索...'
           = button_tag type: 'submit', class: 'ui right icon button' do
             i.search.icon
 

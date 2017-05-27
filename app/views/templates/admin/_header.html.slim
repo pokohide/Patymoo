@@ -4,8 +4,8 @@
 
   .right.menu
     .item
-      = form_tag '/entries/search', method: :get, enforce_utf8: false, class: 'ui action transparent input' do
-        = text_field_tag :q, '', placeholder: 'Search...'
+      = form_tag admin_search_path, method: :get, enforce_utf8: false, class: 'ui action transparent input' do
+        = text_field_tag :q, params[:q], placeholder: 'Search...'
         = button_tag type: 'submit', class: 'ui teal right icon button' do
           i.search.icon
 
