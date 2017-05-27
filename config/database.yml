@@ -6,23 +6,18 @@ default: &default
   host: db
 
 development:
-  <<: *default
-  port: <%= ENV.fetch('DATABASE_PORT') { 5432 } %>
-  host: <%= ENV.fetch('DATABASE_HOST') { 'localhost' } %>
-  username: <%= ENV.fetch('DATABASE_USER') { 'root' } %>
-  password: <%= ENV.fetch('DATABASE_PASSWORD') { 'password' } %>
-  pool: <%= ENV.fetch('RAILS_MAX_THREADS') { 5 } %>
-  database: patymoo_development
+  adapter: sqlite3
+  pool: 5
+  timeout: 5000
+  database: db/development.sqlite3
 
 test:
-  <<: *default
-  port: <%= ENV.fetch('DATABASE_PORT') { 5432 } %>
-  host: <%= ENV.fetch('DATABASE_HOST') { 'localhost' } %>
-  username: <%= ENV.fetch('DATABASE_USER') { 'root' } %>
-  password: <%= ENV.fetch('DATABASE_PASSWORD') { 'password' } %>
-  pool: <%= ENV.fetch('RAILS_MAX_THREADS') { 5 } %>
-  database: patymoo_test
+  adapter: sqlite3
+  pool: 5
+  timeout: 5000
+  database: db/test.sqlite3
 
 production:
   <<: *default
+  url: <%= ENV['DATABASE_URL'] %>
   database: patymoo_production
