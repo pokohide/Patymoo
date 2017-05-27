@@ -23,7 +23,7 @@ class Event < ApplicationRecord
   # References
   belongs_to :admin
   counter_culture :admin
-  counter_culture :member, column_name: 'members_count'
+  counter_culture :members, column_name: 'members_count'
   has_many :event_members, dependent: :destroy
   has_many :members, through: :event_members
 
