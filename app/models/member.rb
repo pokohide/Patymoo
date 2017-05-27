@@ -25,6 +25,9 @@
 #
 
 class Member < ApplicationRecord
+  include SearchModule
+  include GraphData
+
   ALLOWED_PARAMS = [:id, :_destroy, :name, :email, :twitter, :facebook,
     :connpass, :grade, :school_type, :school_name, :department, :phone_number, :note]
 
@@ -42,12 +45,6 @@ class Member < ApplicationRecord
   has_many :event_members, dependent: :destroy
   has_many :events, through: :event_members
 
-  # Scope
-  scope :like, ->(q) {
-    where('name like ?', "%#{q}%") if q.present?
-  }
-  scope :asc, -> { order(open_date: :asc) }
-
   def grades_when type
     case type
     when 'nurcery'
@@ -59,5 +56,15 @@ class Member < ApplicationRecord
 
   def events_count
     self.event_members_count
+  end
+
+  def convert hash
+    convert_table = self.school_types_i18n
+    convert_table.merge!(self.grades_i18n)
+    convert_table.merge!({ nil => '未登録' })
+
+    hash.each_with_object({}) do |(key, value), new_hash|
+      new_hash[convert_table[key]] = value
+    end
   end
 end

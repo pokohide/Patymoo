@@ -1,6 +1,5 @@
 class Admin::EventsController < ApplicationController
-  layout 'admin_application'
-  before_action :set_admin
+  include AdminModule
   before_action :set_event, only: [:show, :edit, :update, :destroy]
 
   def index
@@ -42,9 +41,6 @@ class Admin::EventsController < ApplicationController
   end
 
   private
-  def set_admin
-    redirect_to login_path, notice: 'ログインしてください。' unless @admin = current_user
-  end
 
   def set_event
     @event = @admin.events.find(params[:id])

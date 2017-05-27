@@ -1,10 +1,9 @@
 class Admin::AdminsController < ApplicationController
-  layout 'admin_application'
-  before_action :set_admin
+  include AdminModule
 
   def index
-    @grade_data = @admin.members.group('grade').count
-    @school_data = @admin.members.group('school_name').count
+    @grade_data = convert @admin.members.graph_data('grade')
+    @school_data = convert @admin.members.graph_data('school_name')
     @school_count = @admin.members.pluck(:school_name).uniq.count
   end
 
@@ -27,10 +26,6 @@ class Admin::AdminsController < ApplicationController
   end
 
   private
-
-  def set_admin
-    redirect_to login_path, notice: 'ログインしてください。' unless @admin = current_user
-  end
 
   def admin_params
     params.require(:admin).permit(:username, :email)

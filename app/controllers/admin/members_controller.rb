@@ -1,15 +1,14 @@
 class Admin::MembersController < ApplicationController
-  layout 'admin_application'
-  before_action :set_admin
+  include AdminModule
   before_action :set_member, only: [:show, :edit, :update, :destroy]
 
   def index
     @q = params[:member_q]
     @members = @admin.members.like(@q).page(params[:page]).per(18)
 
-    @grade_data = @admin.members.group('grade').count
-    @school_data = @admin.members.group('school_name').count
-    @school_count =@admin.members.pluck(:school_name).uniq.count
+    @grade_data = convert @admin.members.graph_data('grade')
+    @school_data = convert @admin.members.graph_data('school_name')
+    @school_count = @admin.members.pluck(:school_name).uniq.count
   end
 
   def new
@@ -46,9 +45,6 @@ class Admin::MembersController < ApplicationController
   end
 
   private
-  def set_admin
-    redirect_to login_path, notice: 'ログインしてください。' unless @admin = current_user
-  end
 
   def set_member
     @member = @admin.members.find(params[:id])

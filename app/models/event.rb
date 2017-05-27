@@ -18,19 +18,16 @@
 #
 
 class Event < ApplicationRecord
-  # Validation
+  include SearchModule
+  include GraphData
 
   # References
   belongs_to :admin
   counter_culture :admin
-  has_many :event_members, dependent: :destroy
-  has_many :members, through: :event_members
 
-  # Scope
-  scope :like, ->(q) {
-    where('name like ?', "%#{q}%") if q.present?
-  }
-  scope :asc, -> { order(open_date: :asc) }
+  has_many :event_members, dependent: :destroy
+
+  has_many :members, through: :event_members
   accepts_nested_attributes_for :members
 
   def members_count

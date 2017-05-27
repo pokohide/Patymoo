@@ -15,11 +15,6 @@
 #
 
 class EventMember < ApplicationRecord
-  NESTED_ALLOWED_PARAMS = [
-    :id, :_destroy, :event_id, :member_id,
-    member_attributes: Member::ALLOWED_PARAMS
-  ]
-
   # References
   belongs_to :event
   belongs_to :member
