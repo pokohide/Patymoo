@@ -1,4 +1,4 @@
-$('.Admin.members.new, .Admin.members.create').ready(() => {
+$('.Admin.members.new, .Admin.members.create, .Admin.members.edit, .Admin.members.update').ready(() => {
 
   /* バリデーション */
   $('.ui.form').form({

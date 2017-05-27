@@ -34,7 +34,12 @@
     i.calendar.icon
     | イベント一覧
 
-  .ui.grid
+  .ui.grid.center.aligned
+    - if @events.size.zero?
+      .top-margin.margin-60
+        = link_to new_admin_event_path, class: 'ui basic button' do
+          i.icon.calendar
+          | イベントを作成
 
     - cache(['events', @events.map(&:id), @events.maximum(:updated_at)]) do
       = render @events
