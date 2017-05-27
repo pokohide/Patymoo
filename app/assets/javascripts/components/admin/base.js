@@ -1,3 +1,5 @@
+import './events/form'
+import './members/form'
 import './attend'
 
 $('.Admin').ready(() => {

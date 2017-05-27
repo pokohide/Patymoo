@@ -1,6 +1,6 @@
 - content_for :header do
-  = render 'shared/breadcrumb', breadcrumb: { 'メンバ一覧': admin_members_path, \
-    'メンバー編集': admin_member_path(@member) }
+  = render 'templates/admin/breadcrumb', breadcrumb: { 'メンバー一覧': admin_members_path, \
+    'メンバー編集': edit_admin_member_path(@member) }
 
 .ui.text.container
   .ui.main.text.container

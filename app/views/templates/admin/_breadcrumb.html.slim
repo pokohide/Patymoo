@@ -1,0 +1,8 @@
+.ui.breadcrumb
+  = link_to 'ダッシュボード', admin_dashboard_path
+  - breadcrumb.each_with_index do |(page, url), i|
+    i.right.angle.icon.divider
+    - if i == breadcrumb.size - 1
+      .active.section = page
+    - else
+      = link_to page, url, class: 'section'

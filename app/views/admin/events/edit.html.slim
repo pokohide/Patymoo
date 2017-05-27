@@ -1,5 +1,6 @@
 - content_for :header do
-  = render 'shared/breadcrumb', breadcrumb: { 'イベント編集': edit_admin_event_path(@event) }
+  = render 'templates/admin/breadcrumb', breadcrumb: { 'イベント一覧': admin_events_path, \
+    'イベント編集': edit_admin_event_path(@event) }
 
 .ui.text.container
   .ui.main.text.container

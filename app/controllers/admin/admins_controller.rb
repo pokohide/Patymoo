@@ -3,9 +3,9 @@ class Admin::AdminsController < ApplicationController
   before_action :set_admin
 
   def index
-    @grade_data = Member.group('grade').count
-    @school_data = Member.group('school_name').count
-    @school_count = Member.pluck(:school_name).uniq.count
+    @grade_data = @admin.members.group('grade').count
+    @school_data = @admin.members.group('school_name').count
+    @school_count = @admin.members.pluck(:school_name).uniq.count
   end
 
   def edit

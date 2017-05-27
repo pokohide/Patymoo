@@ -12,7 +12,7 @@ class AdminsController < ApplicationController
   def create
     @admin = Admin.new(admin_params)
     if @admin.save
-      redirect_to admins_path(@admin), notice: '新規登録しました。'
+      redirect_to admin_dashboard_path(@admin), notice: '新規登録しました。'
     else
       render :new, notice: '登録に失敗しました。'
     end

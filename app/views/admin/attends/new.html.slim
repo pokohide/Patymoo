@@ -1,5 +1,5 @@
 - content_for :header do
-  = render 'shared/breadcrumb', breadcrumb: { "#{@event.name}": admin_event_path(@event), \
+  = render 'templates/admin/breadcrumb', breadcrumb: { "#{@event.name}": admin_event_path(@event), \
     '出席管理': new_admin_event_attend_path(@event) }
 
 .ui.text.container
