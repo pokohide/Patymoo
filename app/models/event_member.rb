@@ -23,9 +23,8 @@ class EventMember < ApplicationRecord
   # References
   belongs_to :event
   belongs_to :member
-
-  #counter_culture :event, column_name: 'events_count'
-  #counter_culture :member, column_name: 'members_count'
+  counter_culture :event
+  counter_culture :member
 
   validates :member_id, presence: true, uniqueness: { scope: [:event_id] }
 end

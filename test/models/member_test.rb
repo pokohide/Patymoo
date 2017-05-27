@@ -2,22 +2,22 @@
 #
 # Table name: members
 #
-#  id           :integer          not null, primary key
-#  admin_id     :integer
-#  name         :string(64)       not null
-#  email        :string
-#  twitter      :string
-#  facebook     :string
-#  connpass     :string
-#  grade        :integer
-#  school_type  :integer
-#  school_name  :string
-#  department   :string
-#  phone_number :string
-#  note         :string
-#  created_at   :datetime         not null
-#  updated_at   :datetime         not null
-#  events_count :integer          default(0), not null
+#  id                  :integer          not null, primary key
+#  admin_id            :integer
+#  name                :string(64)       not null
+#  email               :string
+#  twitter             :string
+#  facebook            :string
+#  connpass            :string
+#  grade               :integer
+#  school_type         :integer
+#  school_name         :string
+#  department          :string
+#  phone_number        :string
+#  note                :string
+#  created_at          :datetime         not null
+#  updated_at          :datetime         not null
+#  event_members_count :integer          default(0), not null
 #
 # Indexes
 #
