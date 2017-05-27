@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "postinstall": "npm install"
+    "postinstall": "yarn install"
   },
   "engines": {
     "node": "7.6.0",
