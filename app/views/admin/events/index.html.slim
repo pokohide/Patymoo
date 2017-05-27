@@ -4,6 +4,10 @@
 
 .ui.container.top-margin.margin-60
 
+  - if @q.present?
+    .ui.segment
+      = "「#{@q}」で検索した結果です"
+
   h4.ui.horizontal.divider.header
     i.bar.chart.icon
     | イベント情報
@@ -29,7 +33,6 @@
         .label Team Members
 
 .ui.container.top-margin.margin-60
-
   h4.ui.horizontal.divider.header
     i.calendar.icon
     | イベント一覧

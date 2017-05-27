@@ -2,6 +2,10 @@
   = render 'templates/admin/breadcrumb', breadcrumb: { 'メンバー一覧': admin_members_path }
 
 .ui.container.top-margin.margin-60
+  - if @q.present?
+    .ui.segment
+      = "「#{@q}」で検索"
+
   h4.ui.horizontal.divider.header
     i.pie.chart.icon
     | メンバ割合

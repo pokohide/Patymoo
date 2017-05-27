@@ -18,9 +18,10 @@
         i.add.user.icon
         | 参加者追加
       .item
-        .ui.icon.inverted.input
-          input(type='text' placeholder='参加者を検索...')
-          i.search.icon
+        = form_tag admin_members_path, method: :get, enforce_utf8: false, class: 'ui action inverted input' do
+          = text_field_tag :q, '', placeholder: '参加者を検索...'
+          = button_tag type: 'submit', class: 'ui right icon button' do
+            i.search.icon
 
   .item
     .header イベント
@@ -32,9 +33,10 @@
         i.plus.square.outline.icon
         | イベント追加
       .item
-        .ui.icon.inverted.input
-          input(type='text' placeholder='イベントを検索...')
-          i.search.icon
+        = form_tag admin_events_path, method: :get, enforce_utf8: false, class: 'ui action inverted input' do
+          = text_field_tag :q, '', placeholder: 'イベントを検索...'
+          = button_tag type: 'submit', class: 'ui right icon button' do
+            i.search.icon
 
   = link_to admin_edit_path, class: 'item' do
     i.setting.icon
