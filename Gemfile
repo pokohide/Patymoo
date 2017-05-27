@@ -7,10 +7,6 @@ end
 
 gem 'rails', '~> 5.0.2'
 
-# DB
-# gem 'sqlite3'
-gem 'pg'
-
 # Server
 gem 'puma', '~> 3.0'
 
