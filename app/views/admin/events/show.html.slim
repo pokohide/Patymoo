@@ -60,4 +60,10 @@
     tfoot.full-width
       tr
         th.center.aligned(colspan='5')
-          = paginate @members
+          - if @members.size.zero?
+            | メンバーが存在しません。
+            = link_to new_admin_member_path, class: 'ui basic button' do
+              i.icon.user
+              | 追加する
+          - else
+            = paginate @members

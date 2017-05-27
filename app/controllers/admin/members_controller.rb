@@ -5,12 +5,10 @@ class Admin::MembersController < ApplicationController
 
   def index
     @members = @admin.members.page(params[:page]).per(18)
-    # @chart_data = {'2014-04-01' => 60, '2014-04-02' => 65, '2014-04-03' => 64}
 
-    @grade_data = Member.group('grade').count
-    @school_data = Member.group('school_name').count
-
-    @school_count = Member.pluck(:school_name).uniq.count
+    @grade_data = @admin.members.group('grade').count
+    @school_data = @admin.members.group('school_name').count
+    @school_count =@admin.members.pluck(:school_name).uniq.count
   end
 
   def new

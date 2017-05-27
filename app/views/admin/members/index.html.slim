@@ -7,16 +7,28 @@
     | メンバ割合
   
   .ui.very.padded.container.horizontal.segments
-    .ui.segment
+    .ui.center.aligned.segment
       h4.ui.horizontal.divider.header
         | 学年割合
-      = pie_chart @grade_data, donut: true, legend: 'bottom', width: '400px', style: 'margin: 0 auto',
-        id: 'member-grade-chart pie-chart', label: '人数'
-    .ui.segment
+      - if @grade_data.present?
+        = pie_chart @grade_data, donut: true, legend: 'bottom', width: '400px', style: 'margin: 0 auto',
+          id: 'member-grade-chart pie-chart', label: '人数'
+      - else
+        p まだ情報がありません。
+        = link_to new_admin_member_path, class: 'ui basic button' do
+          i.icon.user
+          | 追加する
+    .ui.center.aligned.segment
       h4.ui.horizontal.divider.header
         | 大学割合
-      = pie_chart @school_data, donut: true, legend: 'bottom',
-        id: 'member-school-chart pie-chart', label: '人数'
+      - if @school_data.present?
+        = pie_chart @school_data, donut: true, legend: 'bottom',
+          id: 'member-school-chart pie-chart', label: '人数'
+      - else
+        p まだ情報がありません。
+        = link_to new_admin_member_path, class: 'ui basic button' do
+          i.icon.user
+          | 追加する
 
 
 .ui.container.top-margin.margin-60
@@ -49,7 +61,7 @@
   h4.ui.horizontal.divider.header
     i.calendar.icon
     | メンバ一覧
-    
+
   table.ui.sortable.striped.red.table
     thead.full-width
       tr
@@ -63,9 +75,10 @@
     tfoot.full-width
       tr
         th.center.aligned(colspan='5')
-          = paginate @members
-      / tr
-      /   th(colspan='4')
-      /     .ui.right.floated.small.primary.labeled.icon.button
-      /       i.user.icon
-      /       | メンバー追加
+          - if @members.size.zero?
+            | メンバーが存在しません。
+            = link_to new_admin_member_path, class: 'ui basic button' do
+              i.icon.user
+              | 追加する
+          - else
+            = paginate @members
