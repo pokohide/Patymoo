@@ -41,6 +41,8 @@ Rails.application.configure do
     password: password
   }
 
+  config.assets.precompile += %w( Chart.bundle.js )
+
   # `config.assets.precompile` and `config.assets.version` have moved to config/initializers/assets.rb
 
   # Enable serving of images, stylesheets, and JavaScripts from an asset server.
