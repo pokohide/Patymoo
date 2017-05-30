@@ -115,9 +115,11 @@ $('.Admin.attends.new').ready(() => {
       $field.find('.ui.dimmer#attending').dimmer({ closable: false })
       $field.find('.ui.dimmer#attending .attending-member-name').text(member.name)
       $field.find('.member-id').val(member.id)
+      $field.addClass('attend-true')
     } else if (state === 'disattend') {
       $field.find('.ui.dimmer#attending').dimmer('toggle')
       $field.find('.ui.dimmer#attending').dimmer('hide')
+      $field.removeClass('attend-true')
     }
   }
 
