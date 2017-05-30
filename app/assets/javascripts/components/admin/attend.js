@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-$('.Admin').ready(() => {
+$('.Admin.attends.new').ready(() => {
 
   /* メンバーを名前から検索 */
   const setSearch = () => {

@@ -21,12 +21,13 @@ class Event < ApplicationRecord
   include SearchModule
   include GraphData
 
+  # Validate
+  validates :name, presence: true
+
   # References
   belongs_to :admin
   counter_culture :admin
-
   has_many :event_members, dependent: :destroy
-
   has_many :members, through: :event_members
   accepts_nested_attributes_for :members
 

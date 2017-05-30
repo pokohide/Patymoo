@@ -38,6 +38,7 @@ class Member < ApplicationRecord
   # See: config/ja.yml
 
   # Validates
+  validates :name, presence: true
 
   # References
   belongs_to :admin
