@@ -34,6 +34,19 @@
           i.icon.user
           | 追加する
 
+  .ui.very.padded.container.horizontal.segments
+    .ui.center.aligned.segment
+      h4.ui.horizontal.divider.header
+        | 大学割合
+      - if @depeartment_data.present?
+        = pie_chart @depeartment_data, donut: true, legend: 'bottom',
+          id: 'member-department-chart pie-chart', label: '人数'
+      - else
+        p まだ情報がありません。
+        = link_to new_admin_member_path, class: 'ui basic button' do
+          i.icon.user
+          | 追加する
+
 
 .ui.container.top-margin.margin-60
   h4.ui.horizontal.divider.header

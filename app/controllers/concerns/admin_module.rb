@@ -12,7 +12,8 @@ module AdminModule
     convert_table.merge!({ nil => '未登録', '' => '未登録' })
 
     hash.each_with_object({}) do |(key, value), new_hash|
-      new_hash[convert_table[key]] = value
+      new_key = convert_table[key]
+      new_hash[new_key || key] = value
     end
   end
 

@@ -12,7 +12,11 @@ class Admin::EventsController < ApplicationController
   end
 
   def show
-    @members = @event.members.page(params[:page]).per(18)
+    @members = @event.members
+    @grade_data = convert @members.graph_data('grade')
+    @school_data = convert @members.graph_data('school_name')
+    @depeartment_data = convert @members.graph_data('department')
+    @members = @members.page(params[:page]).per(18)
   end
 
   def create

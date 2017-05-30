@@ -4,11 +4,12 @@ class Admin::MembersController < ApplicationController
 
   def index
     @q = params[:member_q]
-    @members = @admin.members.like(@q).page(params[:page]).per(18)
-
-    @grade_data = convert @admin.members.graph_data('grade')
-    @school_data = convert @admin.members.graph_data('school_name')
+    @members = @admin.members
+    @grade_data = convert @members.graph_data('grade')
+    @school_data = convert @members.graph_data('school_name')
+    @depeartment_data = convert @members.graph_data('department')
     @school_count = @admin.members.pluck(:school_name).uniq.count
+    @members = @members.like(@q).page(params[:page]).per(18)
   end
 
   def new

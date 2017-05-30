@@ -16,12 +16,6 @@
           td = @event.name
         tr
           td.collapsing
-            i.browser.icon
-            | イベント内容
-          td = @event.description
-
-        tr
-          td.collapsing
             i.linkify.icon
             | イベントリンク
           td = link_to @event.link, @event.link, target: '_blank'
@@ -30,6 +24,11 @@
             i.hourglass.start.icon
             | 開始時間
           td = @event.start_at
+        tr
+          td.collapsing
+            i.browser.icon
+            | イベント内容
+          td = @event.description
       .tfoot.full-width
         th(colspan='2')
           = link_to '削除する', admin_event_path(@event), method: :delete,
@@ -41,10 +40,51 @@
           = link_to '出席管理', new_admin_event_attend_path(@event),
             class: 'ui right floated button'
 
+h4.ui.horizontal.divider.header
+  i.pie.chart.icon
+  | メンバ割合
+
+.ui.very.padded.container.horizontal.segments
+  .ui.center.aligned.segment
+    h4.ui.horizontal.divider.header
+      | 学年割合
+    - if @grade_data.present?
+      = pie_chart @grade_data, donut: true, legend: 'bottom', width: '400px', style: 'margin: 0 auto',
+        id: 'member-grade-chart pie-chart', label: '人数'
+    - else
+      p まだ情報がありません。
+      = link_to new_admin_member_path, class: 'ui basic button' do
+        i.icon.user
+        | 追加する
+  .ui.center.aligned.segment
+    h4.ui.horizontal.divider.header
+      | 大学割合
+    - if @school_data.present?
+      = pie_chart @school_data, donut: true, legend: 'bottom',
+        id: 'member-school-chart pie-chart', label: '人数'
+    - else
+      p まだ情報がありません。
+      = link_to new_admin_member_path, class: 'ui basic button' do
+        i.icon.user
+        | 追加する
+
+.ui.very.padded.container.horizontal.segments
+  .ui.center.aligned.segment
+    h4.ui.horizontal.divider.header
+      | 大学割合
+    - if @depeartment_data.present?
+      = pie_chart @depeartment_data, donut: true, legend: 'bottom',
+        id: 'member-department-chart pie-chart', label: '人数'
+    - else
+      p まだ情報がありません。
+      = link_to new_admin_member_path, class: 'ui basic button' do
+        i.icon.user
+        | 追加する
+
 .ui.container.top-margin.margin-60
 
   h4.ui.horizontal.divider.header
-    i.calendar.icon
+    i.icon.users
     | 参加者一覧
     
   table.ui.sortable.striped.red.table
