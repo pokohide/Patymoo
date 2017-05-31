@@ -20,7 +20,7 @@
     "babel-loader": "^7.0.0",
     "babel-register": "^6.24.1"
   },
-  "name": "Party",
+  "name": "Patymoo",
   "description": "## 初期データ投入",
   "version": "1.0.0",
   "main": "index.js",
@@ -29,13 +29,13 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/hyde2able/Party.git"
+    "url": "git+https://github.com/hyde2able/Patymoo.git"
   },
   "keywords": [],
   "author": "pokohide",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/hyde2able/Party/issues"
+    "url": "https://github.com/hyde2able/Patymoo/issues"
   },
-  "homepage": "https://github.com/hyde2able/Party#readme"
+  "homepage": "https://github.com/hyde2able/Patymoo#readme"
 }

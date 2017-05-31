@@ -2,33 +2,32 @@ module ApplicationHelper
 
   def default_meta_tags
     {
-      site: 'ユーザ管理サービス Party',
+      site: 'ユーザ管理サービス Ptymoo',
       reverse: true,
       separator: '|',
-      keywords: '大学生,管理サービス,Party',
+      keywords: '大学生,管理サービス,Ptymoo',
       title: '',
       charset: 'utf-8',
       viewport: 'width=device-width, initial-scale=1.0',
       description: 'Partyは簡単にユーザの管理をできるサービスです。',
       open_graph: {
-        title: '名古屋のサークル・イベント情報サイト BeeApp',
-        url: 'http://www.beeapp.be'
+        title: 'ユーザ管理サービス Ptymoo',
+        url: 'https://patymoo.herokuapp.com/'
       },
       og: {
-        title: 'ユーザ管理サービス Party',
+        title: 'ユーザ管理サービス Ptymoo',
         type: 'website',
-        url: 'http://www.beeapp.be',
-        #url: request.original_url,
+        url: request.original_url,
         image: '',
-        site_name: 'BeeApp',
-        description: 'Partyは簡単にユーザの管理をできるサービスです。',
+        site_name: 'Patymoo',
+        description: 'Patymooは簡単にユーザの管理をできるサービスです。',
         locale: 'ja_JP'
       },
       twitter: {
         card: 'summary',
         site: '@OthloTech',
-        title: 'ユーザ管理サービス Party',
-        description: 'Partyは簡単にユーザの管理をできるサービスです。',
+        title: 'ユーザ管理サービス Patymoo',
+        description: 'Patymooは簡単にユーザの管理をできるサービスです。',
         image: ''
       }
     }
