@@ -15,12 +15,17 @@
     margin-bottom: 0em;
     font-size: 4em;
     font-weight: normal;
+    color: #000;
   }
 
   h2 {
     font-size: 1.7em;
     font-weight: normal;
+    color: #000;
   }
+
+  background: #ddd image-url("home/bg.jpg") no-repeat center center;
+  background-size: cover;
 }
 
 .ui.vertical.stripe {

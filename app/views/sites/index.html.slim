@@ -3,43 +3,53 @@
   .ui.inverted.vertical.masthead.center.aligned.segment
     .ui.text.container
       h1.ui.inverted.header
-        | Imagine-a-Company
-      h2 Do whatever you want when you want to.
-      .ui.huge.primary.button
-        | Get Started
+        | Patymoo
+      h2 イベントごとの参加者の管理・統計を簡単に
+      br
+      = link_to new_admin_path, class: 'ui huge positive button' do
+        | さっそく登録する
         i.right.arrow.icon
-  .ui.vertical.stripe.segment
+  .ui.vertical.stripe.selsgment
     .ui.middle.aligned.stackable.grid.container
       .row
         .eight.wide.column
-          h3.ui.header We Help Companies and Companions
-          p We can give your company superpowers to do things that they never thought possible. Let us delight your customers and empower your needs...through pure data analytics.
-          h3.ui.header We Make Bananas That Can Dance
-          p Yes that's right, you thought it was the stuff of dreams, but even bananas can be bioengineered.
+          h3.ui.header グラフでわかる
+          p 参加者の統計情報が、グラフで可視化されます。分かりやすく色分けされています。
+          
+          h3.ui.header シンプルな見た目
+          p 分かりやすい見た目で使いやすい❗名前ごとにソートしたりできるよ。
+
         .six.wide.right.floated.column
-          img.ui.large.bordered.rounded.image src="https://semantic-ui.com/examples/assets/images/wireframe/white-image.png"
+          = image_tag 'home/feature.png', class: 'ui large bordered rounded image'
       .row
         .center.aligned.column
-          a.ui.huge.button Check Them Out
+          = link_to '使ってみる', new_admin_path, class: 'ui huge positive button'
   .ui.vertical.stripe.quote.segment
     .ui.equal.width.stackable.internally.celled.grid
       .center.aligned.row
         .column
-          h3 "What a Company"
-          p That is what they all say about us
-        .column
-          h3 "I shouldn't have gone with their competitor."
+          h3 "これ良いね❗(自画自賛)"
           p
-            img.ui.avatar.image src="https://semantic-ui.com/examples/assets/images/wireframe/white-image.png"
-            b Nan
-            | Chief Fun Officer Acme Toys
+            = image_tag 'home/pokohide.jpg', class: 'ui avatar image'
+            b(style='padding:0 10px') by
+            | pokoさん
+        .column
+          h3 "これええや〜〜〜〜ん。作るのスゴイ❗"
+          p
+            = image_tag 'home/kama.jpg', class: 'ui avatar image'
+            b(style='padding:0 10px') by
+            | kamaさん
   .ui.vertical.stripe.segment
     .ui.text.container
-      h3.ui.header Breaking The Grid, Grabs Your Attention
-      p Instead of focusing on content creation and hard work, we have learned how to master the art of doing nothing by providing massive amounts of whitespace and generic content that can seem massive, monolithic and worth your attention.
-      a.ui.large.button Read More
+      h3.ui.header イベントの参加者管理に
+      p イベント運営でConnpassというサービスを使っていますが、そのサービス上で参加者を管理をするのには限界がありました。Patymooを使うことで、参加者をシンプルに、可視化して簡単に管理できるようになりました。
+      p
+        b(style='padding:0 10px') by
+        = link_to 'OthloTech', 'http://www.othlo.tech'
       h4.ui.horizontal.header.divider
-        a href="#"  Case Studies
-      h3.ui.header Did We Tell You About Our Bananas?
-      p Yes I know you probably disregarded the earlier boasts as non-sequitur filler content, but its really true. It took years of gene splicing and combinatory DNA research, but our bananas can really dance.
-      a.ui.large.button I'm Still Quite Interested
+        a href="#" 事例
+      h3.ui.header 団体メンバーの出席管理に
+      p 弊団体では週に一回ミーティングを行っていますが、その出席管理にPatymooを使っています。あらかじめ登録しておいたメンバーは出席画面で自動補完してくれるし、後から見返すことも容易なので大変重宝しています。
+      p
+        b(style='padding:0 10px') by
+        | 某団体
