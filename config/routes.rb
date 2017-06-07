@@ -22,7 +22,11 @@ Rails.application.routes.draw do
     resources :events do
       resources :attends, only: [:new, :create, :edit, :update, :destroy]
     end
-    resources :members
+    resources :members do
+      collection do
+        get '/search', to: 'members#search', as: 'search'
+      end
+    end
   end
 
   namespace :api do

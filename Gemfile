@@ -19,6 +19,7 @@ gem 'meta-tags'
 gem 'sitemap_generator'
 
 # Data
+gem 'ransack'
 gem 'seed-fu', '~> 2.3'
 gem 'faker'
 gem 'counter_culture', '~> 1.0'

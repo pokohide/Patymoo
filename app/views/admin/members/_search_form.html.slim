@@ -1,0 +1,36 @@
+.ui.styled.fluid.accordion
+  .title class="#{q.present? ? 'active' : ''}"
+    i.icon.dropdown
+    | 詳細検索
+  .content class="#{q.present? ? 'active' : ''}"
+    = search_form_for(q, url: search_admin_members_path, html: { method: :get, class: 'ui form', role: 'form' }) do |f|
+      .field
+        label.label = f.label :name, '名前'
+        = f.search_field :name
+      
+      .three.fields
+        .field
+          label.label = f.label :school_type, 'タイプ'
+          .ui.fluid.selection.dropdown
+            = f.hidden_field :school_type
+            i.dropdown.icon
+            .text
+            .menu
+              - Member.school_types_i18n.invert.each do |key, value|
+                .item(data-value="#{value}")
+                  = key
+        .field
+          label.label = f.label :school_name, '学校名'
+          = f.search_field :school_name
+        .field
+          label.label = f.label :grade, '学年'
+          .ui.fluid.selection.dropdown
+            = f.hidden_field :grade
+            i.dropdown.icon
+            .text
+            .menu
+              - Member.grades_i18n.invert.to_a.each do |key, value|
+                .item(data-value="#{value}")
+                  = key
+
+      = f.submit '検索する', class: 'ui teal fluid button'

@@ -3,13 +3,18 @@ class Admin::MembersController < ApplicationController
   before_action :set_member, only: [:show, :edit, :update, :destroy]
 
   def index
-    @q = params[:member_q]
+    @q = Member.search
     @members = @admin.members
     @grade_data = convert @members.graph_data('grade')
     @school_data = convert @members.graph_data('school_name')
     @depeartment_data = convert @members.graph_data('department')
     @school_count = @admin.members.pluck(:school_name).uniq.count
-    @members = @members.like(@q).page(params[:page]).per(18)
+    @members = @members.like(params[:member_q]).page(params[:page]).per(18)
+  end
+
+  def search
+    @q = @admin.members.search(search_params)
+    @members = @q.result.order(name: :desc).page(params[:page]).per(18)
   end
 
   def new
@@ -49,6 +54,10 @@ class Admin::MembersController < ApplicationController
 
   def set_member
     @member = @admin.members.find(params[:id])
+  end
+
+  def search_params
+    params.require(:q).permit(:name, :school_type, :school_name, :grade)
   end
 
   def member_params
