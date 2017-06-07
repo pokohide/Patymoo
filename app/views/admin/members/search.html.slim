@@ -1,5 +1,6 @@
 - content_for :header do
-  = render 'templates/admin/breadcrumb', breadcrumb: { 'メンバー一覧': admin_members_path }
+  = render 'templates/admin/breadcrumb', breadcrumb: { 'メンバー一覧': admin_members_path, \
+    '検索': search_admin_members_path }
 
 .ui.container.top-margin.margin-60
   = render partial: 'admin/members/search_form', locals: { q: @q }

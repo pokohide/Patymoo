@@ -1,4 +1,7 @@
 ja:
+  views:
+    pagination:
+      truncate: ...
   enums:
     member:
       school_type:
