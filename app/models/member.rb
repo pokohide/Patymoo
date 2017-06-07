@@ -26,6 +26,7 @@
 
 class Member < ApplicationRecord
   include SearchModule
+  include CsvExportable
   include GraphData
 
   ALLOWED_PARAMS = [:id, :_destroy, :name, :email, :twitter, :facebook,
