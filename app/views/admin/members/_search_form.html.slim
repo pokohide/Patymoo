@@ -33,4 +33,9 @@
                 .item(data-value="#{value}")
                   = key
 
-      = f.submit '検索する', class: 'ui teal fluid button'
+      = f.submit class: 'ui teal basic button' do
+        i.icon.search
+        | 検索
+      = f.button class: 'ui right floated basic button', name: 'export_csv' do
+        i.icon.file.text.outline
+        | 出力

@@ -1,3 +1,9 @@
+class CsvExportConstraint
+  def self.matches?(request)
+    request.params.has_key?(:export_csv)
+  end
+end
+
 Rails.application.routes.draw do
   root to: 'sites#index'
 
@@ -24,7 +30,8 @@ Rails.application.routes.draw do
     end
     resources :members do
       collection do
-        get '/search', to: 'members#search', as: 'search'
+        get :search, action: :export_csv, constraints: CsvExportConstraint
+        get :search
       end
     end
   end

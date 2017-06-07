@@ -1,6 +1,7 @@
 class Admin::MembersController < ApplicationController
   include AdminModule
   before_action :set_member, only: [:show, :edit, :update, :destroy]
+  before_action :set_members, only: [:search, :export_csv]
 
   def index
     @q = Member.search
@@ -13,8 +14,10 @@ class Admin::MembersController < ApplicationController
   end
 
   def search
-    @q = @admin.members.search(search_params)
-    @members = @q.result.order(name: :desc).page(params[:page]).per(18)
+  end
+
+  def export_csv
+    send_data @members.to_csv, filename: "#{Time.current.strftime('%Y%m%d')}.csv"
   end
 
   def new
@@ -54,6 +57,11 @@ class Admin::MembersController < ApplicationController
 
   def set_member
     @member = @admin.members.find(params[:id])
+  end
+
+  def set_members
+    @q = @admin.members.search(search_params)
+    @members = @q.result.order(name: :desc).page(params[:page]).per(18)
   end
 
   def search_params
