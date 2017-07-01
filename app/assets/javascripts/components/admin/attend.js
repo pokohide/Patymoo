@@ -4,11 +4,12 @@ $('.Admin.attends.new').ready(() => {
 
   /* メンバーを名前から検索 */
   const setSearch = () => {
+    const eventId = $('#event_id').val()
     $('.ui.search').search({
       minCharacters: 2,
       debug: true,
       apiSettings: {
-        url: '/api/v1/members/search?q={query}',
+        url: '/api/v1/members/search?q={query}&event_id=' + eventId,
         onResponse: (res) => {
           let response = { results: [] }
           const maxResults = 8

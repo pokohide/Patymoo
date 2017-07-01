@@ -3,8 +3,9 @@ class Api::V1::MembersController < ApplicationController
   before_action :set_admin
 
   def search
-    q, page = params[:q], params[:page]
-    @members = @admin.members.like(q).page(page).per(18)
+    q, page, event_id = params[:q], params[:page], params[:event_id]
+    member_ids = @admin.events.find_by(id: event_id).members.pluck(:id)
+    @members = @admin.members.like(q).where.not(id: member_ids).page(page).per(6)
   end
 
   def attend
